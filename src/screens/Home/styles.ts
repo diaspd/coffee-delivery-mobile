@@ -10,7 +10,27 @@ export const styles = StyleSheet.create({
   },
   intro: {
     backgroundColor: THEME.COLORS.GREY_100,
-    height: 342,
+    height: 380,
+  },
+  title: {
+    fontFamily: THEME.FONTS.BOLD,
+    fontSize: THEME.FONT_SIZE.TITLE_MD,
+    color: THEME.COLORS.WHITE,
+    marginHorizontal: 34,
+    marginTop: 56
+  },
+  input: {
+    backgroundColor: THEME.COLORS.GREY_200,
+    color: THEME.COLORS.WHITE,
+   
+    alignItems: 'center',
+    flexDirection: 'row',
+   
+    gap: 8,
+    marginTop: 15,
+    marginHorizontal: 34,
+    padding: 12,
+    borderRadius: 4,
   },
   text: {
     fontFamily: THEME.FONTS.BOLD,
