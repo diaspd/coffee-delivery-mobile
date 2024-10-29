@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
 
+import { MagnifyingGlass } from "phosphor-react-native";
+
+import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
 
 import { CoffeeCard } from "../../components/CoffeeCard";
 import { Header } from "../../components/Header";
-import { MagnifyingGlass } from "phosphor-react-native";
-import { THEME } from "../../styles/theme";
 
 export function Home() {
   const [product, setProduct] = useState('caffe');
