@@ -39,15 +39,15 @@ export function Home() {
 
       </View>
         <View style={styles.coffeeList}>
-          <View style={{ marginTop: -72, flex: 1}}>
+          <View style={styles.carousel}>
             <CarouselComponent />
           </View>
 
           <FlatList 
-          data={product}
-          keyExtractor={item => item}
-          renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
-        />
+            data={product}
+            keyExtractor={item => item}
+            renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
+          />
       </View>
     </>
   )

@@ -2,24 +2,25 @@ import { Button, Text, View } from "react-native";
 import { styles } from "./styles";
 import { Image } from "react-native";
 
+import Coffe from '../../assets/coffees/Image.png'
+
 export function CoffeeCard() {
   return (
-       <View style={styles.container}>
-        <Image source={{ uri: `https://github.com/diaspd.png`}} alt="imagem de café" />
+    <>
+      <Image source={Coffe} alt="imagem de café" style={{ zIndex: 1 }} />
+       <View style={[styles.container]}>
+      
         <View style={styles.tags}>
-          <Text>tag</Text>
+          <Text style={styles.tagText}>Tradicional</Text>
         </View>
-        <Text>nom</Text>
-        <Text>escription</Text>
+        <Text style={styles.title}>Latte</Text>
+        <Text style={styles.description}>Café expresso com o dobro de leite e espuma cremosa</Text>
 
         <View style={styles.containerShop}>
-          <Text>R$</Text>
-          <Text>24</Text>
-          <View>
-            <Button title="comprar"
-            />
-          </View>
+          <Text style={styles.dollar}>R$</Text>
+          <Text style={styles.price}>9,90</Text>
         </View>
       </View>
+      </>
   )
 }

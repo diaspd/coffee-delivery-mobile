@@ -40,5 +40,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: THEME.COLORS.GREY_700,
     width: '100%',
+  },
+  carousel: {
+    marginTop: -72, 
+    flex: 1,
+    marginBottom: 120
   }
 });
