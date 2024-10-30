@@ -8,9 +8,11 @@ import { styles } from "./styles";
 
 import { CoffeeCard } from "../../components/CoffeeCard";
 import { Header } from "../../components/Header";
+import { CarouselComponent } from "../../components/CarouselComponent";
+import { CoffeeListCard } from "../../components/CoffeeListCard";
 
 export function Home() {
-  const [product, setProduct] = useState('caffe');
+  const [product, setProduct] = useState<string[]>(['caffe', 'cap']);
   const [focus, setFocus] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
@@ -34,13 +36,17 @@ export function Home() {
             keyboardType="default"
           />
         </View>
-      </View>
 
+      </View>
         <View style={styles.coffeeList}>
-        <FlatList 
+          <View style={{ marginTop: -72, flex: 1}}>
+            <CarouselComponent />
+          </View>
+
+          <FlatList 
           data={product}
           keyExtractor={item => item}
-          renderItem={({ item, index }) => <CoffeeCard data={item} key={index} /> }
+          renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
         />
       </View>
     </>

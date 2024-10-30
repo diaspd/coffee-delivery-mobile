@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   intro: {
     backgroundColor: THEME.COLORS.GREY_100,
-    height: 380,
+    height: 420,
   },
   title: {
     fontFamily: THEME.FONTS.BOLD,
@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.FONT_SIZE.TITLE_XL,
   },
   coffeeList: {
+    flex: 1,
     backgroundColor: THEME.COLORS.GREY_700,
     width: '100%',
   }
