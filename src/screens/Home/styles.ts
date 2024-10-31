@@ -40,15 +40,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: THEME.COLORS.GREY_900,
     width: '100%',
+    paddingBottom: 24,
   },
   carousel: {
     marginTop: -72, 
     flex: 1,
-    marginBottom: 120
   },
   coffeeListWrapper: {
     marginHorizontal: 34,
-    marginTop: 180,
   },
   coffeeListTitle: {
     color: THEME.COLORS.GREY_300,

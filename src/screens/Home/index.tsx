@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList, Text, TextInput, View } from "react-native";
+import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
 
 import { MagnifyingGlass } from "phosphor-react-native";
 
@@ -17,7 +17,7 @@ export function Home() {
   const [inputValue, setInputValue] = useState('');
 
   return (
-    <>
+    <ScrollView>
       <View style={styles.intro}>
         <Header />
 
@@ -69,6 +69,6 @@ export function Home() {
           renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
         />
       </View>
-    </>
+    </ScrollView>
   )
 }
