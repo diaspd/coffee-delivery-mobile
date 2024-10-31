@@ -67,6 +67,7 @@ export function Home() {
           data={product}
           keyExtractor={item => item}
           renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
+          // ListHeaderComponent={<Text>Tradicionais</Text>}
         />
       </View>
     </ScrollView>

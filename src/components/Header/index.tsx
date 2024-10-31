@@ -1,10 +1,16 @@
-import { Text, View } from "react-native";
-import { styles } from "./styles";
+import { Pressable, Text, View } from "react-native";
 
 import { MapPin, ShoppingCart } from 'phosphor-react-native'
+
+import { useNavigation } from "@react-navigation/native";
+import type { AppRoutesProps } from "../../routes/app.routes";
+
 import { THEME } from "../../styles/theme";
+import { styles } from "./styles";
 
 export function Header() {
+  const navigationStack = useNavigation<AppRoutesProps>();
+
   return (
     <View style={styles.container}>
       <View style={styles.local}>
@@ -12,9 +18,9 @@ export function Header() {
         <Text style={styles.text}>Porto Alegre, RS</Text>
       </View>
     
-      <View>
+      <Pressable onPress={() => navigationStack.navigate('cart')}>
         <ShoppingCart color={THEME.COLORS.YELLOW_DARK} size={20} weight="fill" />
-      </View>
+      </Pressable>
     </View>
   )
 }
