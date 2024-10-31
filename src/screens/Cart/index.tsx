@@ -12,7 +12,7 @@ export function Cart() {
 
   return (
     <ScrollView>
-        <Header />
+        <Header hasGoBack />
 
         <FlatList 
           data={product}
