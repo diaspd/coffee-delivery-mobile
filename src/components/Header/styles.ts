@@ -19,5 +19,12 @@ export const styles = StyleSheet.create({
   text: { 
     color: THEME.COLORS.GREY_900,
     fontSize: THEME.FONT_SIZE.TEXT_SM
+  },
+  cartText: {
+    color: THEME.COLORS.GREY_200,
+    fontSize: THEME.FONT_SIZE.TITLE_SM,
+    fontFamily: THEME.FONTS.BOLD,
+    marginRight: "auto", 
+    marginLeft: 130
   }
 });

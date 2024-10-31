@@ -19,7 +19,7 @@ export function Home() {
   return (
     <ScrollView>
       <View style={styles.intro}>
-        <Header />
+        <Header hasCart />
 
         <Text style={styles.title}>Encontre o café perfeito para qualquer hora do dia</Text>
 

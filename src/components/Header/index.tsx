@@ -10,9 +10,10 @@ import { styles } from "./styles";
 
 interface HeaderProps {
   hasGoBack?: boolean
+  hasCart?: boolean 
 }
 
-export function Header({hasGoBack}: HeaderProps) {
+export function Header({hasGoBack, hasCart}: HeaderProps) {
   const navigationStack = useNavigation<AppRoutesProps>();
 
   return (
@@ -26,11 +27,15 @@ export function Header({hasGoBack}: HeaderProps) {
           <MapPin color={THEME.COLORS.PURPLE} size={20} weight="fill" />
           <Text style={styles.text}>Porto Alegre, RS</Text>
         </View>
-      )}
+      )} 
 
-      <Pressable onPress={() => navigationStack.navigate('cart')}>
-        <ShoppingCart color={THEME.COLORS.YELLOW_DARK} size={20} weight="fill" />
-      </Pressable>
+      {hasCart ? (
+        <Pressable onPress={() => navigationStack.navigate('cart')}>
+          <ShoppingCart color={THEME.COLORS.YELLOW_DARK} size={20} weight="fill" />
+        </Pressable>
+      ): (
+        <Text style={styles.cartText}>Carrinho</Text>
+      )}
     </View>
   )
 }
