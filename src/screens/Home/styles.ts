@@ -45,5 +45,34 @@ export const styles = StyleSheet.create({
     marginTop: -72, 
     flex: 1,
     marginBottom: 120
+  },
+  coffeeListWrapper: {
+    marginHorizontal: 34,
+    marginTop: 180,
+  },
+  coffeeListTitle: {
+    color: THEME.COLORS.GREY_300,
+    fontFamily: THEME.FONTS.BOLD,
+    fontSize: THEME.FONT_SIZE.TITLE_SM,
+  },
+  tagWrapper: {
+    flexDirection: 'row',
+    gap: 4,
+    marginBottom: 16
+  },
+  tags: {
+    flexWrap: 'wrap',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 9999,
+    marginTop: 18,
+    borderColor: THEME.COLORS.PURPLE,
+    borderWidth: 2,
+  },
+  tagText: {
+    color: THEME.COLORS.PURPLE_DARK,
+    textTransform: 'uppercase',
+    fontFamily: THEME.FONTS.BOLD_DEFAULT,
+    fontSize: THEME.FONT_SIZE.TAG
   }
 });

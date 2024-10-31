@@ -36,18 +36,38 @@ export function Home() {
             keyboardType="default"
           />
         </View>
-
       </View>
-        <View style={styles.coffeeList}>
-          <View style={styles.carousel}>
-            <CarouselComponent />
+
+      <View style={styles.coffeeList}>
+        <View style={styles.carousel}>
+          <CarouselComponent />
+        </View>
+
+        <View style={styles.coffeeListWrapper}>
+        <Text style={styles.coffeeListTitle}>
+          Nossos cafés
+        </Text>
+
+        <View style={styles.tagWrapper}>
+          <View style={styles.tags}>
+            <Text style={styles.tagText}>Tradicional</Text>
           </View>
 
-          <FlatList 
-            data={product}
-            keyExtractor={item => item}
-            renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
-          />
+          <View style={styles.tags}>
+            <Text style={styles.tagText}>doces</Text>
+          </View>
+
+          <View style={styles.tags}>
+            <Text style={styles.tagText}>especiais</Text>
+          </View>
+        </View>
+        </View>
+
+        <FlatList 
+          data={product}
+          keyExtractor={item => item}
+          renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
+        />
       </View>
     </>
   )
