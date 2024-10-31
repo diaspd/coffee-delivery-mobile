@@ -7,11 +7,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     
-    height: 120,
+    height: 132,
     
     marginTop: 24,
     paddingHorizontal: 12,
     marginHorizontal: 34,
+    gap: 10,
 
     borderTopRightRadius: 36,
     borderTopLeftRadius: 6,
@@ -27,30 +28,13 @@ export const styles = StyleSheet.create({
   containerShop: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'baseline',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  tags: {
-    flexWrap: 'wrap',
-    display: 'flex',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 9999,
-    marginTop: 60,
-    backgroundColor: THEME.COLORS.PURPLE_LIGHT
-  },
-  tagText: {
-    color: THEME.COLORS.PURPLE_DARK,
-    fontSize: THEME.FONT_SIZE.TAG,
-    fontFamily: THEME.FONTS.BOLD_DEFAULT,  
-    textTransform: 'uppercase'
+    alignItems: 'baseline'
   },
   title: {
     color: THEME.COLORS.GREY_200,
     fontSize: THEME.FONT_SIZE.TITLE_MD,
     fontFamily: THEME.FONTS.BOLD, 
-    marginTop: 18,
+    marginTop: 16,
     marginBottom: 4,
   },
   description: {
@@ -68,6 +52,6 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.YELLOW_DARK,
     fontSize: THEME.FONT_SIZE.TITLE_LG,
     fontFamily: THEME.FONTS.BOLD, 
-    marginTop: 18
+    marginTop: 8
   }
 });
