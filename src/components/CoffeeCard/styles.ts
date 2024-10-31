@@ -6,12 +6,10 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-  
-    margin: 5,
+
     marginTop: -50,
     marginHorizontal: 0,
-    height: 262,
+    height: 245,
     width: 208,
     paddingHorizontal: 16,
 
@@ -19,7 +17,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 6,
     borderBottomRightRadius: 6,
     borderBottomLeftRadius: 36,
-    backgroundColor: THEME.COLORS.GREY_800,
+    backgroundColor: THEME.COLORS.GREY_700,
 
     shadowColor: THEME.COLORS.GREY_100,
     shadowOffset: {width: -2, height: 4},
@@ -39,6 +37,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 9999,
+    marginTop: 60,
     backgroundColor: THEME.COLORS.PURPLE_LIGHT
   },
   tagText: {
@@ -51,6 +50,8 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.GREY_200,
     fontSize: THEME.FONT_SIZE.TITLE_MD,
     fontFamily: THEME.FONTS.BOLD, 
+    marginTop: 18,
+    marginBottom: 4,
   },
   description: {
     color: THEME.COLORS.GREY_400,
@@ -67,5 +68,6 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.YELLOW_DARK,
     fontSize: THEME.FONT_SIZE.TITLE_LG,
     fontFamily: THEME.FONTS.BOLD, 
+    marginTop: 18
   }
 });

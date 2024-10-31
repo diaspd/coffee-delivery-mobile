@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
   },
   coffeeList: {
     flex: 1,
-    backgroundColor: THEME.COLORS.GREY_700,
+    backgroundColor: THEME.COLORS.GREY_900,
     width: '100%',
   },
   carousel: {
