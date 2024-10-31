@@ -70,8 +70,15 @@ export const styles = StyleSheet.create({
   },
   tagText: {
     color: THEME.COLORS.PURPLE_DARK,
-    textTransform: 'uppercase',
     fontFamily: THEME.FONTS.BOLD_DEFAULT,
-    fontSize: THEME.FONT_SIZE.TAG
-  }
+    fontSize: THEME.FONT_SIZE.TAG,
+    textTransform: 'uppercase'
+  },
+  listTitle: {
+    color: THEME.COLORS.GREY_400,
+    fontFamily: THEME.FONTS.BOLD,
+    fontSize: THEME.FONT_SIZE.TITLE_XS,
+    marginHorizontal: 34,
+    marginTop: 20
+  },
 });
