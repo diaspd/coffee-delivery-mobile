@@ -1,9 +1,11 @@
-import { Button, Text, View } from "react-native";
+import { Button, Text, View, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Image } from "react-native";
 
 import Coffe from '../../assets/coffees/Image.png'
 import { Counter } from "../Counter";
+import { Trash } from "phosphor-react-native";
+import { THEME } from "../../styles/theme";
 
 export function CoffeeCartCard() {
   return (
@@ -18,8 +20,12 @@ export function CoffeeCartCard() {
 
         <Text style={styles.millilitres}>227ml</Text>
 
-
-        <Counter />
+        <View style={styles.actions}>
+          <Counter />
+          <TouchableOpacity style={styles.removeButtom}>
+            <Trash color={THEME.COLORS.PURPLE} size={20}/>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )

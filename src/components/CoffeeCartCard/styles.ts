@@ -7,11 +7,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    
+
     height: 132,
     
     paddingHorizontal: 12,
-    gap: 10,
+    gap: 20,
 
     backgroundColor: THEME.COLORS.GREY_900,
   },
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'space-between',
-    width: 200
+    width: 256
   },
   title: {
     color: THEME.COLORS.GREY_100,
@@ -44,5 +44,15 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.GREY_100,
     fontSize: THEME.FONT_SIZE.TITLE_SM,
     fontFamily: THEME.FONTS.BOLD, 
+  },
+  actions: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 8
+  },
+  removeButtom: {
+    backgroundColor: THEME.COLORS.GREY_700,
+    padding: 8,
+    borderRadius: 6
   }
 });
