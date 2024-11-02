@@ -46,6 +46,7 @@ export const styles = StyleSheet.create({
     fontFamily: THEME.FONTS.BOLD, 
   },
   actions: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'baseline',
     gap: 8
