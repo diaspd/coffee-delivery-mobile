@@ -3,6 +3,7 @@ import { styles } from "./styles";
 import { Image } from "react-native";
 
 import Coffe from '../../assets/coffees/Image.png'
+import { Counter } from "../Counter";
 
 export function CoffeeCartCard() {
   return (
@@ -16,6 +17,9 @@ export function CoffeeCartCard() {
         </View>
 
         <Text style={styles.millilitres}>227ml</Text>
+
+
+        <Counter />
       </View>
     </View>
   )
