@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { FlatList, ScrollView } from "react-native";
+import { FlatList, ScrollView, View } from "react-native";
 
 import { styles } from "./styles";
 
 import { Header } from "../../components/Header";
 
-import { CoffeeListCard } from "../../components/CoffeeListCard";
 import { CoffeeCartCard } from "../../components/CoffeeCartCard";
 
 export function Cart() {
@@ -17,8 +16,13 @@ export function Cart() {
 
         <FlatList 
           data={product}
+          style={{ marginTop: 24 }}
           keyExtractor={item => item}
-          renderItem={({ item, index }) => <CoffeeCartCard key={index} /> }
+          renderItem={({ item, index }) => (
+            <View style={styles.coffeeCartCardwrapper}>
+              <CoffeeCartCard key={index} />
+            </View>
+          ) }
         />
     </ScrollView>
   )

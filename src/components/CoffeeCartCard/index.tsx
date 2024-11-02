@@ -15,7 +15,7 @@ export function CoffeeCartCard() {
           <Text style={styles.price}>9,90</Text>
         </View>
 
-        <Text style={styles.description}>227ml</Text>
+        <Text style={styles.millilitres}>227ml</Text>
       </View>
     </View>
   )

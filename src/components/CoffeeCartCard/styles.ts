@@ -10,21 +10,10 @@ export const styles = StyleSheet.create({
     
     height: 132,
     
-    marginTop: 24,
     paddingHorizontal: 12,
-    marginHorizontal: 34,
     gap: 10,
 
-    borderTopRightRadius: 36,
-    borderTopLeftRadius: 6,
-    borderBottomRightRadius: 6,
-    borderBottomLeftRadius: 36,
-    backgroundColor: THEME.COLORS.GREY_700,
-
-    shadowColor: THEME.COLORS.GREY_100,
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3
+    backgroundColor: THEME.COLORS.GREY_900,
   },
   containerShop: {
     display: 'flex',
@@ -34,15 +23,15 @@ export const styles = StyleSheet.create({
     width: 200
   },
   title: {
-    color: THEME.COLORS.GREY_200,
-    fontSize: THEME.FONT_SIZE.TITLE_MD,
-    fontFamily: THEME.FONTS.BOLD, 
+    color: THEME.COLORS.GREY_100,
+    fontSize: THEME.FONT_SIZE.TEXT_MD,
+    fontFamily: THEME.FONTS.REGULAR, 
     marginTop: 16,
     marginBottom: 4,
   },
-  description: {
+  millilitres: {
     color: THEME.COLORS.GREY_400,
-    fontSize: THEME.FONT_SIZE.TEXT_XS,
+    fontSize: THEME.FONT_SIZE.TEXT_SM,
     fontFamily: THEME.FONTS.REGULAR, 
     maxWidth: 220
   },
@@ -52,9 +41,8 @@ export const styles = StyleSheet.create({
     fontFamily: THEME.FONTS.REGULAR, 
   },
   price: {
-    color: THEME.COLORS.YELLOW_DARK,
-    fontSize: THEME.FONT_SIZE.TITLE_LG,
+    color: THEME.COLORS.GREY_100,
+    fontSize: THEME.FONT_SIZE.TITLE_SM,
     fontFamily: THEME.FONTS.BOLD, 
-    marginTop: 8
   }
 });
