@@ -20,7 +20,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'space-between',
-    width: 256
+    width: 256,
+    marginTop: 6
   },
   title: {
     color: THEME.COLORS.GREY_100,
