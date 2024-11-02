@@ -6,6 +6,7 @@ import { styles } from "./styles";
 import { Header } from "../../components/Header";
 
 import { CoffeeListCard } from "../../components/CoffeeListCard";
+import { CoffeeCartCard } from "../../components/CoffeeCartCard";
 
 export function Cart() {
   const [product, setProduct] = useState<string[]>(['caffe', 'cap']);
@@ -17,7 +18,7 @@ export function Cart() {
         <FlatList 
           data={product}
           keyExtractor={item => item}
-          renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
+          renderItem={({ item, index }) => <CoffeeCartCard key={index} /> }
         />
     </ScrollView>
   )
