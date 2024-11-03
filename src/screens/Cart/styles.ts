@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: THEME.COLORS.WHITE,
     fontSize: THEME.FONT_SIZE.BUTTON,
-    fontFamily: THEME.FONTS.REGULAR, 
+    fontFamily: THEME.FONTS.BOLD_DEFAULT, 
     textTransform: "uppercase",
     textAlign: 'center'
   }
