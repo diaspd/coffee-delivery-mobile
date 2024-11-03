@@ -1,4 +1,4 @@
-import { Button, Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Image } from "react-native";
 
@@ -12,10 +12,10 @@ export function CoffeeCartCard() {
     <View style={styles.container}>
       <Image source={Coffe} alt="imagem de café" />
     
-      <View>
+      <View> 
         <View style={styles.containerShop}>
           <Text style={styles.title}>Irlandês</Text>
-          <Text style={styles.price}>9,90</Text>
+          <Text style={styles.price}>R$ 9,90</Text>
         </View>
 
         <Text style={styles.millilitres}>227ml</Text>

@@ -11,5 +11,50 @@ export const styles = StyleSheet.create({
     borderColor: THEME.COLORS.GREY_500,
     borderTopWidth: 1,
     borderBottomWidth: 1
+  }, 
+  footer: {
+    width: "100%",
+    height: 160,
+    
+    paddingTop: 28,
+    paddingHorizontal: 32,
+    paddingBottom: 40,
+
+
+    backgroundColor: THEME.COLORS.WHITE,
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  priceWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: "100%"
+  },
+  totalValue: {
+    color: THEME.COLORS.GREY_200,
+    fontSize: THEME.FONT_SIZE.TEXT_MD,
+    fontFamily: THEME.FONTS.REGULAR, 
+  },
+  price: {
+    color: THEME.COLORS.GREY_200,
+    fontSize: THEME.FONT_SIZE.TITLE_MD,
+    fontFamily: THEME.FONTS.BOLD, 
+  },
+  button: {
+    backgroundColor: THEME.COLORS.YELLOW_DARK,
+    
+    width: '100%',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+    height: 46,
+
+    borderRadius: 6
+  },
+  buttonText: {
+    color: THEME.COLORS.WHITE,
+    fontSize: THEME.FONT_SIZE.BUTTON,
+    fontFamily: THEME.FONTS.REGULAR, 
+    textTransform: "uppercase",
+    textAlign: 'center'
   }
 });

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FlatList, ScrollView, View } from "react-native";
+import { FlatList, Text, View, Pressable } from "react-native";
 
 import { styles } from "./styles";
 
@@ -24,6 +24,22 @@ export function Cart() {
           </View>
         ) }
       />
+
+      <View style={styles.footer}>
+        <View style={styles.priceWrapper}>
+          <Text style={styles.totalValue}>
+            Valor total
+          </Text>
+         
+          <Text style={styles.price}> 
+            R$ 9,90
+          </Text>
+        </View>
+
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>confirmar pedido</Text>
+        </Pressable>
+      </View>
     </View>
   )
 }
