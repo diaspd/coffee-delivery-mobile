@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { FlatList, Text, View, Pressable } from "react-native";
 
-import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
+
+import { styles } from "./styles";
 import { Header } from "../../components/Header";
 
 import { CoffeeCartCard } from "../../components/CoffeeCartCard";
+import type { AppRoutesProps } from "../../routes/app.routes";
 
 export function Cart() {
   const [product, setProduct] = useState<string[]>(['caffe', 'cap']);
+  const navigationStack = useNavigation<AppRoutesProps>();
 
   return (
     <View style={styles.container}>
@@ -36,7 +40,7 @@ export function Cart() {
           </Text>
         </View>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => navigationStack.navigate('finish')}>
           <Text style={styles.buttonText}>confirmar pedido</Text>
         </Pressable>
       </View>

@@ -2,10 +2,12 @@ import { createNativeStackNavigator, type NativeStackNavigationProp } from '@rea
 
 import { Home } from '../screens/Home';
 import { Cart } from '../screens/Cart';
+import { Finish } from '../screens/Finish';
 
 type Routes = {
   home: undefined;
   cart: undefined;
+  finish: undefined;
 }
 
 const { Navigator, Screen, Group } = createNativeStackNavigator<Routes>();
@@ -27,6 +29,11 @@ export function AppRoutes() {
       <Screen
         name="cart"
         component={Cart}
+      />
+
+      <Screen
+        name="finish"
+        component={Finish}
       />
     </Navigator>
   )
