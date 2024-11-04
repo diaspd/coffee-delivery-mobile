@@ -3,11 +3,13 @@ import { createNativeStackNavigator, type NativeStackNavigationProp } from '@rea
 import { Home } from '../screens/Home';
 import { Cart } from '../screens/Cart';
 import { Finish } from '../screens/Finish';
+import { Product } from '../screens/Product';
 
 type Routes = {
   home: undefined;
   cart: undefined;
   finish: undefined;
+  product: undefined;
 }
 
 const { Navigator, Screen, Group } = createNativeStackNavigator<Routes>();
@@ -34,6 +36,12 @@ export function AppRoutes() {
       <Screen
         name="finish"
         component={Finish}
+      />
+
+      
+      <Screen
+        name="product"
+        component={Product}
       />
     </Navigator>
   )
