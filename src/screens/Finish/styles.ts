@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.COLORS.GREY_900,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 48
+    paddingHorizontal: 48
   },
   button: {
     backgroundColor: THEME.COLORS.YELLOW_DARK,
