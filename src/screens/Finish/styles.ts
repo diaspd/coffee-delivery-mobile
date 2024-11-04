@@ -10,13 +10,28 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 48
   },
+  title: {
+    color: THEME.COLORS.YELLOW_DARK,
+    fontSize: THEME.FONT_SIZE.TITLE_LG,
+    fontFamily: THEME.FONTS.BOLD, 
+    marginTop: 46,
+    marginBottom: 6
+  },
+  description: {
+    color: THEME.COLORS.GREY_200,
+    fontSize: THEME.FONT_SIZE.TEXT_SM,
+    fontFamily: THEME.FONTS.REGULAR, 
+    textAlign: 'center',
+    width: 230
+  },
   button: {
-    backgroundColor: THEME.COLORS.YELLOW_DARK,
+    backgroundColor: THEME.COLORS.PURPLE_DARK,
     
     width: '100%',
     paddingVertical: 12,
     paddingHorizontal: 8,
     height: 46,
+    marginTop: 64,
 
     borderRadius: 6
   },
