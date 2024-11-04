@@ -1,8 +1,10 @@
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 
 import { styles } from "./styles";
 
 import { Header } from "../../components/Header";
+
+import Coffe from '../../assets/coffees/coffee-big.png'
 
 export function Product() {
   return (
@@ -20,11 +22,10 @@ export function Product() {
         </View>
 
         <Text style={styles.title}>Bebida a base de café, uísque irlandês, açúcar e chantilly</Text>
-
-        {/* <Image /> */}
       </View>
 
       <View style={styles.coffeeList}>
+        <Image source={Coffe} style={{ marginTop: -245, zIndex: 15, marginHorizontal: 35}} />
       
       </View>
     </>

@@ -6,7 +6,6 @@ import { MagnifyingGlass } from "phosphor-react-native";
 import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
 
-import { CoffeeCard } from "../../components/CoffeeCard";
 import { Header } from "../../components/Header";
 import { CarouselComponent } from "../../components/CarouselComponent";
 import { CoffeeListCard } from "../../components/CoffeeListCard";

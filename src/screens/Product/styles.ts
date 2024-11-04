@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   intro: {
     backgroundColor: THEME.COLORS.GREY_100,
-    height: 420,
+    height: 650,
   },
   title: {
     fontFamily: THEME.FONTS.BOLD,
