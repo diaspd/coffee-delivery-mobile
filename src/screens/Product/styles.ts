@@ -12,6 +12,24 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.COLORS.GREY_100,
     height: 650,
   },
+  tagWrapper: {
+    paddingHorizontal: 12,
+    paddingVertical: 2,
+    width: 72 ,
+    height: 25,
+    justifyContent: 'center',
+    marginHorizontal: 32,
+
+    borderRadius: 9999,
+    marginTop: 50,
+    backgroundColor: THEME.COLORS.GREY_200,
+  },
+  tag: {
+    color: THEME.COLORS.WHITE,
+    fontSize: THEME.FONT_SIZE.TAG,
+    fontFamily: THEME.FONTS.BOLD_DEFAULT,  
+    textTransform: 'uppercase'
+  },
   title: {
     fontFamily: THEME.FONTS.BOLD,
     fontSize: THEME.FONT_SIZE.TITLE_MD,
@@ -53,11 +71,6 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.GREY_300,
     fontFamily: THEME.FONTS.BOLD,
     fontSize: THEME.FONT_SIZE.TITLE_SM,
-  },
-  tagWrapper: {
-    flexDirection: 'row',
-    gap: 4,
-    marginBottom: 16
   },
   tags: {
     flexWrap: 'wrap',

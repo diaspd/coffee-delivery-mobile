@@ -12,7 +12,9 @@ export function Product() {
       <View style={styles.intro}>
         <Header hasCart hasGoBack /> 
 
-        <Text>especial</Text>
+        <View style={styles.tagWrapper}>
+          <Text style={styles.tag}>especial</Text>
+        </View>
 
         <View>
           <Text style={styles.title}>Irlandês</Text>
