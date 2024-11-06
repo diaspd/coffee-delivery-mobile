@@ -2,7 +2,8 @@ import { Pressable, Text, View } from "react-native";
 
 import { ArrowLeft, MapPin, ShoppingCart } from 'phosphor-react-native'
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
 import type { AppRoutesProps } from "../../routes/app.routes";
 
 import { THEME } from "../../styles/theme";
@@ -15,12 +16,13 @@ interface HeaderProps {
 
 export function Header({hasGoBack, hasCart}: HeaderProps) {
   const navigationStack = useNavigation<AppRoutesProps>();
+  const route = useRoute();
 
   return (
     <View style={styles.container}>
       {hasGoBack ? (
         <Pressable onPress={() => navigationStack.goBack()}>
-          <ArrowLeft color={THEME.COLORS.GREY_100}/>
+          <ArrowLeft color={route.name === "product" ? THEME.COLORS.WHITE : THEME.COLORS.GREY_100}/>
         </Pressable>
       ): (
         <View style={styles.local}>
