@@ -28,9 +28,24 @@ export function Product() {
         <Text style={styles.description}>Bebida a base de café, uísque irlandês, açúcar e chantilly</Text>
       </View>
 
-      <View style={styles.coffeeList}>
-        <Image source={Coffe} style={{ marginTop: -245, zIndex: 15, marginHorizontal: 35}} />
-      
+      <View style={styles.footer}>
+        <Image source={Coffe} style={{ marginTop: -245, zIndex: 15 }} />
+
+        <Text style={styles.footerTitle}>Selecione o tamanho:</Text>
+
+        <View style={styles.optionsWrapper}>
+          <View style={styles.option}>
+            <Text style={styles.optionText}>114ml</Text>
+          </View>
+
+          <View style={styles.option}>
+            <Text style={styles.optionText}>140ml</Text>
+          </View>
+
+          <View style={styles.option}>
+            <Text style={styles.optionText}>227ml</Text>
+          </View>
+        </View>
       </View>
     </>
   )
