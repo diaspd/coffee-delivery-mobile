@@ -1,10 +1,12 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Pressable } from "react-native";
 
 import { styles } from "./styles";
 
 import { Header } from "../../components/Header";
 
 import Coffe from '../../assets/coffees/coffee-big.png'
+import { Minus, Plus } from "phosphor-react-native";
+import { THEME } from "../../styles/theme";
 
 export function Product() {
   return (
@@ -44,8 +46,24 @@ export function Product() {
 
           <View style={styles.option}>
             <Text style={styles.optionText}>227ml</Text>
-          </View>
+          </View> 
         </View>
+
+        <View style={styles.counterWrapper}>
+            <View style={styles.counter}>
+              <Pressable>
+                <Minus size={24} color={THEME.COLORS.PURPLE} />
+              </Pressable>
+                <Text style={styles.text}>1</Text>
+              <Pressable>
+                <Plus size={24} color={THEME.COLORS.PURPLE} />
+              </Pressable>
+            </View>
+
+            <Pressable style={styles.button}>
+              <Text style={styles.buttonText}>Adicionar</Text>
+            </Pressable>
+          </View>
       </View>
     </>
   )
