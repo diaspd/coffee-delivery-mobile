@@ -16,14 +16,16 @@ export function Product() {
           <Text style={styles.tag}>especial</Text>
         </View>
 
-        <View>
+        <View style={styles.infoWrapper}>
           <Text style={styles.title}>Irlandês</Text>
 
-          <Text>R$</Text>
-          <Text>9,90</Text>
+          <Text style={styles.dolar}>R$
+            <Text style={styles.price}>9,90</Text>
+          </Text>
+          
         </View>
 
-        <Text style={styles.title}>Bebida a base de café, uísque irlandês, açúcar e chantilly</Text>
+        <Text style={styles.description}>Bebida a base de café, uísque irlandês, açúcar e chantilly</Text>
       </View>
 
       <View style={styles.coffeeList}>

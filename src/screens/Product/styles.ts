@@ -30,39 +30,40 @@ export const styles = StyleSheet.create({
     fontFamily: THEME.FONTS.BOLD_DEFAULT,  
     textTransform: 'uppercase'
   },
+  infoWrapper: {
+    marginHorizontal: 34,
+    flexDirection: 'row',
+    marginTop: 18,
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
   title: {
     fontFamily: THEME.FONTS.BOLD,
-    fontSize: THEME.FONT_SIZE.TITLE_MD,
+    fontSize: THEME.FONT_SIZE.TITLE_LG,
     color: THEME.COLORS.WHITE,
-    marginHorizontal: 34,
-    marginTop: 56
   },
-  input: {
-    backgroundColor: THEME.COLORS.GREY_200,
-    color: THEME.COLORS.WHITE,
-   
-    alignItems: 'center',
-    flexDirection: 'row',
-   
-    gap: 8,
-    marginTop: 15,
-    marginHorizontal: 34,
-    padding: 12,
-    borderRadius: 4,
+  dolar: {
+    fontFamily: THEME.FONTS.REGULAR,
+    fontSize: THEME.FONT_SIZE.TEXT_SM,
+    color: THEME.COLORS.YELLOW,
   },
-  text: {
+  price: {
     fontFamily: THEME.FONTS.BOLD,
     fontSize: THEME.FONT_SIZE.TITLE_XL,
+    color: THEME.COLORS.YELLOW
+  },
+  description: {
+    fontFamily: THEME.FONTS.REGULAR,
+    fontSize: THEME.FONT_SIZE.TEXT_MD,
+    color: THEME.COLORS.GREY_500,
+    marginHorizontal: 34,
+    marginTop: 20
   },
   coffeeList: {
     flex: 1,
     backgroundColor: THEME.COLORS.GREY_900,
     width: '100%',
     paddingBottom: 24,
-  },
-  carousel: {
-    marginTop: -72, 
-    flex: 1,
   },
   coffeeListWrapper: {
     marginHorizontal: 34,
