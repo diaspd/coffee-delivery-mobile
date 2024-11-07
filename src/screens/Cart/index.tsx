@@ -9,22 +9,31 @@ import { Header } from "../../components/Header";
 
 import { CoffeeCartCard } from "../../components/CoffeeCartCard";
 import type { AppRoutesProps } from "../../routes/app.routes";
+import { useCart } from "../../hooks/useCart";
 
 export function Cart() {
-  const [product, setProduct] = useState<string[]>(['caffe', 'cap']);
   const navigationStack = useNavigation<AppRoutesProps>();
+  const { cart, removeProductCart } = useCart();
+
+  async function handleItemRemove(productId: string) {
+    try {
+      await removeProductCart(productId);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <View style={styles.container}>
       <Header hasGoBack />
 
       <FlatList 
-        data={product}
+        data={cart}
         style={{ marginTop: 24 }}
-        keyExtractor={item => item}
-        renderItem={({ item, index }) => (
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
           <View style={styles.coffeeCartCardwrapper}>
-            <CoffeeCartCard key={index} />
+            <CoffeeCartCard data={item} onRemove={() => handleItemRemove(item.id)} />
           </View>
         ) }
       />

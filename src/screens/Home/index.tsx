@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
 
 import { MagnifyingGlass } from "phosphor-react-native";
@@ -8,12 +8,22 @@ import { styles } from "./styles";
 
 import { Header } from "../../components/Header";
 import { CarouselComponent } from "../../components/CarouselComponent";
-import { CoffeeListCard } from "../../components/CoffeeListCard";
+import { CoffeeListCard, type ProductCardProps } from "../../components/CoffeeListCard";
+import { PRODUCTS } from "../../components/data/product";
 
 export function Home() {
-  const [product, setProduct] = useState<string[]>(['caffe', 'cap']);
+  const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [focus, setFocus] = useState(false);
+
+  const [flavorSelected, setBrandSelected] = useState('TRADICIONAL');
+
   const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    const filtered = PRODUCTS.filter(product => product.tag === flavorSelected) as ProductCardProps[];
+    setProducts(filtered);
+
+  }, [flavorSelected])
 
   return (
     <ScrollView>
@@ -63,9 +73,9 @@ export function Home() {
         </View>
 
         <FlatList 
-          data={product}
-          keyExtractor={item => item}
-          renderItem={({ item, index }) => <CoffeeListCard key={index} /> }
+          data={products}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => <CoffeeListCard data={item} /> }
           ListHeaderComponent={<Text style={styles.listTitle}>Tradicionais</Text>}
         />
       </View>
