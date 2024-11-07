@@ -31,7 +31,7 @@ export function CoffeeListCard({ data, ...rest }: Props) {
     
       <View>
         <Text style={styles.title}>{data.name}</Text>
-        <Text style={styles.description}>{data.description}</Text>
+        <Text style={styles.description} numberOfLines={2}>{data.description}</Text>
 
         <View style={styles.containerShop}>
           <Text style={styles.dollar}>R$</Text>

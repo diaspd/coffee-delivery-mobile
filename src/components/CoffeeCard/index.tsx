@@ -14,7 +14,7 @@ export function CoffeeCard() {
           <Text style={styles.tagText}>Tradicional</Text>
         </View>
         <Text style={styles.title}>Latte</Text>
-        <Text style={styles.description}>Café expresso com o dobro de leite e espuma cremosa</Text>
+        <Text style={styles.description} numberOfLines={2}>Café expresso com o dobro de leite e espuma cremosa</Text>
 
         <View style={styles.containerShop}>
           <Text style={styles.dollar}>R$</Text>
