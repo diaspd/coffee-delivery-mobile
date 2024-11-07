@@ -9,12 +9,12 @@ import type { AppRoutesProps } from "../../routes/app.routes";
 
 export type ProductCardProps = {
   id: string;
-  ml: number;
+  ml?: number;
   tag: string;
   name: string;
   price: string;
   thumb: Image;
-  product: Image;
+  product?: Image;
   description: string;
 }
 

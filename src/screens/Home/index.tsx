@@ -13,6 +13,7 @@ import { PRODUCTS } from "../../components/data/product";
 
 export function Home() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
+  const [productsNoFilter, setProductsNoFilter] = useState<ProductCardProps[]>([]);
   const [focus, setFocus] = useState(false);
 
   const [flavorSelected, setBrandSelected] = useState('TRADICIONAL');
@@ -21,8 +22,10 @@ export function Home() {
 
   useEffect(() => {
     const filtered = PRODUCTS.filter(product => product.tag === flavorSelected) as ProductCardProps[];
+    const notFiltered = PRODUCTS as ProductCardProps[];
+    
+    setProductsNoFilter(notFiltered)
     setProducts(filtered);
-
   }, [flavorSelected])
 
   return (
@@ -49,7 +52,7 @@ export function Home() {
 
       <View style={styles.coffeeList}>
         <View style={styles.carousel}>
-          <CarouselComponent />
+          <CarouselComponent data={productsNoFilter} />
         </View>
 
         <View style={styles.coffeeListWrapper}>

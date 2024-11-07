@@ -1,10 +1,15 @@
-import { Dimensions, View } from 'react-native';
+import { Dimensions, View, type TouchableOpacityProps } from 'react-native';
 
 import Carousel from 'react-native-reanimated-carousel';
 
 import { CoffeeCard } from '../CoffeeCard';
+import type { ProductCardProps } from '../CoffeeListCard';
 
-export function CarouselComponent() {
+type Props = TouchableOpacityProps & {
+  data: ProductCardProps[];
+};
+
+export function CarouselComponent({ data }: Props) {
   const screenWidth = Dimensions.get('window').width;
   const itemWidth = screenWidth * 0.6;
 
@@ -16,7 +21,7 @@ export function CarouselComponent() {
         width={itemWidth}
         style={{ overflow: 'visible'}}
         height={320}
-        data={[...new Array(6).keys()]}
+        data={data} 
         scrollAnimationDuration={1500}
         autoPlayInterval={6000}
         mode="parallax" 
@@ -25,7 +30,7 @@ export function CarouselComponent() {
           parallaxScrollingOffset: 0,  
           parallaxAdjacentItemScale: 0.8 
         }}
-        renderItem={({ index }) => (
+        renderItem={({ item }) => (
           <View
             style={{
               width: itemWidth,
@@ -33,7 +38,7 @@ export function CarouselComponent() {
               justifyContent: 'center',
             }}
           >
-            <CoffeeCard />
+            <CoffeeCard data={item} />
           </View>
         )}
       />
