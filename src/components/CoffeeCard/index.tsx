@@ -1,21 +1,24 @@
-import { Button, Text, View, type TouchableOpacityProps } from "react-native";
-import { styles } from "./styles";
+import { Pressable, Text, View, type TouchableOpacityProps } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native";
 
 import Coffe from '../../assets/coffees/Image.png'
 import type { ProductCardProps } from "../CoffeeListCard";
+
+import type { AppRoutesProps } from "../../routes/app.routes";
+import { styles } from "./styles";
 
 type Props = TouchableOpacityProps & {
   data: ProductCardProps;
 }
 
 export function CoffeeCard({ data }: Props) {
-  console.log(data)
+  const navigationStack = useNavigation<AppRoutesProps>();
   
   return (
-    <>
-      <Image source={Coffe} alt="imagem de café" style={{ zIndex: 1 }} />
-       <View style={[styles.container]}>
+    <Pressable onPress={() => navigationStack.navigate('product')}>
+      <Image source={Coffe} alt="imagem de café" style={{ zIndex: 1, alignSelf: 'center' }} />
+        <View style={[styles.container]}>
       
         <View style={styles.tags}>
           <Text style={styles.tagText}>{data.tag}</Text>
@@ -28,6 +31,6 @@ export function CoffeeCard({ data }: Props) {
           <Text style={styles.price}>{data.price}</Text>
         </View>
       </View>
-      </>
+    </Pressable>
   )
 }
