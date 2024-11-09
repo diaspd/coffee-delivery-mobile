@@ -2,8 +2,12 @@ import { Dimensions, View, type TouchableOpacityProps } from 'react-native';
 
 import Carousel from 'react-native-reanimated-carousel';
 
+import { useNavigation } from '@react-navigation/native';
+import type { AppRoutesProps } from '../../routes/app.routes';
+
 import { CoffeeCard } from '../CoffeeCard';
 import type { ProductCardProps } from '../CoffeeListCard';
+
 
 type Props = TouchableOpacityProps & {
   data: ProductCardProps[];
@@ -12,6 +16,8 @@ type Props = TouchableOpacityProps & {
 export function CarouselComponent({ data }: Props) {
   const screenWidth = Dimensions.get('window').width;
   const itemWidth = screenWidth * 0.6;
+
+  const navigationStack = useNavigation<AppRoutesProps>();
 
   return (
       <Carousel
@@ -38,7 +44,7 @@ export function CarouselComponent({ data }: Props) {
               justifyContent: 'center',
             }}
           >
-            <CoffeeCard data={item} />
+            <CoffeeCard data={item} onPress={() => navigationStack.navigate('product', { productId: item.id })}/>
           </View>
         )}
       />

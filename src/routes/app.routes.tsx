@@ -9,10 +9,10 @@ type Routes = {
   home: undefined;
   cart: undefined;
   finish: undefined;
-  product: undefined;
+  product: { productId: string };
 }
 
-const { Navigator, Screen, Group } = createNativeStackNavigator<Routes>();
+const { Navigator, Screen } = createNativeStackNavigator<Routes>();
 
 export type AppRoutesProps = NativeStackNavigationProp<Routes>;
 

@@ -1,33 +1,52 @@
+import { useEffect, useState } from "react";
 import { Text, View, Image, Pressable } from "react-native";
+
+import { useRoute } from "@react-navigation/native";
+import { Minus, Plus } from "phosphor-react-native";
 
 import { styles } from "./styles";
 
-import { Header } from "../../components/Header";
-
 import Coffe from '../../assets/coffees/coffee-big.png'
-import { Minus, Plus } from "phosphor-react-native";
 import { THEME } from "../../styles/theme";
 
+import { Header } from "../../components/Header";
+import { PRODUCTS } from "../../components/data/product";
+import type { ProductCardProps } from "../../components/CoffeeListCard";
+
+type RouteParamsProps = {
+  productId: string;
+}
+
 export function Product() {
+  const [product, setProduct] = useState<ProductCardProps>({} as ProductCardProps);
+  const route = useRoute()
+
+  const { productId } = route.params as RouteParamsProps;
+
+  useEffect(() => {
+    const selected = PRODUCTS.filter(item => item.id === productId)[0] as ProductCardProps;
+    setProduct(selected);
+  }, [productId]);
+  
   return (
     <>
       <View style={styles.intro}>
         <Header hasCart hasGoBack /> 
 
         <View style={styles.tagWrapper}>
-          <Text style={styles.tag}>especial</Text>
+          <Text style={styles.tag}>{product.tag}</Text>
         </View>
 
         <View style={styles.infoWrapper}>
-          <Text style={styles.title}>Irlandês</Text>
+          <Text style={styles.title}>{product.name}</Text>
 
           <Text style={styles.dolar}>R$
-            <Text style={styles.price}>9,90</Text>
+            <Text style={styles.price}>{product.price}</Text>
           </Text>
           
         </View>
 
-        <Text style={styles.description}>Bebida a base de café, uísque irlandês, açúcar e chantilly</Text>
+        <Text style={styles.description}>{product.description}</Text>
       </View>
 
       <View style={styles.footer}>

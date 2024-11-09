@@ -3,12 +3,16 @@ import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
 
 import { MagnifyingGlass } from "phosphor-react-native";
 
+import { useNavigation } from "@react-navigation/native";
+import type { AppRoutesProps } from "../../routes/app.routes";
+
 import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
 
 import { Header } from "../../components/Header";
 import { CarouselComponent } from "../../components/CarouselComponent";
 import { CoffeeListCard, type ProductCardProps } from "../../components/CoffeeListCard";
+
 import { PRODUCTS } from "../../components/data/product";
 
 export function Home() {
@@ -19,6 +23,8 @@ export function Home() {
   const [flavorSelected, setBrandSelected] = useState('TRADICIONAL');
 
   const [inputValue, setInputValue] = useState('');
+
+  const navigationStack = useNavigation<AppRoutesProps>();
 
   useEffect(() => {
     const filtered = PRODUCTS.filter(product => product.tag === flavorSelected) as ProductCardProps[];
@@ -78,7 +84,7 @@ export function Home() {
         <FlatList 
           data={products}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <CoffeeListCard data={item} /> }
+          renderItem={({ item }) => <CoffeeListCard data={item} onPress={() => navigationStack.navigate('product', { productId: item.id })} /> }
           ListHeaderComponent={<Text style={styles.listTitle}>Tradicionais</Text>}
         />
       </View>

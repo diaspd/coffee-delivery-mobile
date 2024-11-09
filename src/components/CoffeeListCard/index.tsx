@@ -4,9 +4,6 @@ import { Image } from "react-native";
 
 import Coffe from '../../assets/coffees/Image.png'
 
-import { useNavigation } from "@react-navigation/native";
-import type { AppRoutesProps } from "../../routes/app.routes";
-
 export type ProductCardProps = {
   id: string;
   ml?: number;
@@ -23,10 +20,8 @@ type Props = TouchableOpacityProps & {
 }
 
 export function CoffeeListCard({ data, ...rest }: Props) {
-  const navigationStack = useNavigation<AppRoutesProps>();
-  
   return (
-    <Pressable style={styles.container} onPress={() => navigationStack.navigate('product')}>
+    <Pressable style={styles.container} {...rest}>
       <Image source={Coffe} alt="imagem de café" style={{ zIndex: 1, marginTop: -20 }} />
     
       <View>
