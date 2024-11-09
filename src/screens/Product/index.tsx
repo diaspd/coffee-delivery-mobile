@@ -6,7 +6,7 @@ import { Minus, Plus } from "phosphor-react-native";
 
 import { styles } from "./styles";
 
-import Coffe from '../../assets/coffees/coffee-big.png'
+import Coffe from '../../assets/coffees/coffee-big.png';
 import { THEME } from "../../styles/theme";
 
 import { Header } from "../../components/Header";
@@ -19,19 +19,24 @@ type RouteParamsProps = {
 
 export function Product() {
   const [product, setProduct] = useState<ProductCardProps>({} as ProductCardProps);
-  const route = useRoute()
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
+  const route = useRoute();
   const { productId } = route.params as RouteParamsProps;
 
   useEffect(() => {
-    const selected = PRODUCTS.filter(item => item.id === productId)[0] as ProductCardProps;
+    const selected = PRODUCTS.find(item => item.id === productId) as ProductCardProps;
     setProduct(selected);
   }, [productId]);
-  
+
+  const handleSizeSelect = (size: string) => {
+    setSelectedSize(size);
+  };
+
   return (
     <>
       <View style={styles.intro}>
-        <Header hasCart hasGoBack /> 
+        <Header hasCart hasGoBack />
 
         <View style={styles.tagWrapper}>
           <Text style={styles.tag}>{product.tag}</Text>
@@ -55,35 +60,36 @@ export function Product() {
         <Text style={styles.footerTitle}>Selecione o tamanho:</Text>
 
         <View style={styles.optionsWrapper}>
-          <View style={styles.option}>
-            <Text style={styles.optionText}>114ml</Text>
-          </View>
-
-          <View style={styles.option}>
-            <Text style={styles.optionText}>140ml</Text>
-          </View>
-
-          <View style={styles.option}>
-            <Text style={styles.optionText}>227ml</Text>
-          </View> 
+          {['114ml', '140ml', '227ml'].map((size) => (
+            <Pressable
+              key={size}
+              onPress={() => handleSizeSelect(size)}
+              style={[
+                styles.option,
+                selectedSize === size && { borderColor: THEME.COLORS.PURPLE, borderWidth: 1.5 }
+              ]}
+            >
+              <Text style={[styles.optionText, selectedSize === size && { color: THEME.COLORS.PURPLE, fontFamily: THEME.FONTS.BOLD_DEFAULT }]}>{size}</Text>
+            </Pressable>
+          ))}
         </View>
 
         <View style={styles.counterWrapper}>
-            <View style={styles.counter}>
-              <Pressable>
-                <Minus size={24} color={THEME.COLORS.PURPLE} />
-              </Pressable>
-                <Text style={styles.text}>1</Text>
-              <Pressable>
-                <Plus size={24} color={THEME.COLORS.PURPLE} />
-              </Pressable>
-            </View>
-
-            <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>Adicionar</Text>
+          <View style={styles.counter}>
+            <Pressable>
+              <Minus size={24} color={THEME.COLORS.PURPLE} />
+            </Pressable>
+            <Text style={styles.text}>1</Text>
+            <Pressable>
+              <Plus size={24} color={THEME.COLORS.PURPLE} />
             </Pressable>
           </View>
+
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Adicionar</Text>
+          </Pressable>
+        </View>
       </View>
     </>
-  )
+  );
 }

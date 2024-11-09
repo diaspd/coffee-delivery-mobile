@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { FlatList, Text, View, Pressable } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-
 
 import { styles } from "./styles";
 import { Header } from "../../components/Header";
