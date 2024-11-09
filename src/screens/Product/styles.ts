@@ -13,9 +13,13 @@ export const styles = StyleSheet.create({
     height: 650,
   },
   tagWrapper: {
+    flexWrap: 'wrap',
+    display: 'flex',
+    alignSelf: 'flex-start',
+
     paddingHorizontal: 12,
     paddingVertical: 2,
-    width: 72 ,
+
     height: 25,
     justifyContent: 'center',
     marginHorizontal: 32,
