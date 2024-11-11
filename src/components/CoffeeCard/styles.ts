@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
     fontSize: THEME.FONT_SIZE.TITLE_MD,
     fontFamily: THEME.FONTS.BOLD, 
     marginTop: 18,
-    marginBottom: 4,
+    marginBottom: 4
   },
   description: {
     color: THEME.COLORS.GREY_400,

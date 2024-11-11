@@ -19,7 +19,7 @@ export function CoffeeCard({ data, ...rest }: Props) {
         <View style={styles.tags}>
           <Text style={styles.tagText}>{data.tag}</Text>
         </View>
-        <Text style={styles.title}>{data.name}</Text>
+        <Text style={styles.title} numberOfLines={1}>{data.name}</Text>
         <Text style={styles.description} numberOfLines={2}>{data.description}</Text>
 
         <View style={styles.containerShop}>
