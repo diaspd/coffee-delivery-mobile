@@ -1,8 +1,6 @@
-import { Pressable, Text, View, type TouchableOpacityProps } from "react-native";
+import { Pressable, Text, View, type ImageSourcePropType, type TouchableOpacityProps } from "react-native";
 import { styles } from "./styles";
 import { Image } from "react-native";
-
-import Coffe from '../../assets/coffees/expresso-tradicional.png'
 
 export type ProductCardProps = {
   id: string;
@@ -10,8 +8,7 @@ export type ProductCardProps = {
   tag: string;
   name: string;
   price: string;
-  thumb: Image;
-  product?: Image;
+  thumb: ImageSourcePropType | undefined;
   description: string;
 }
 
@@ -22,7 +19,7 @@ type Props = TouchableOpacityProps & {
 export function CoffeeListCard({ data, ...rest }: Props) {
   return (
     <Pressable style={styles.container} {...rest}>
-      <Image source={Coffe} alt="imagem de café" style={{ zIndex: 1, marginTop: -20 }} />
+      <Image source={data.thumb} alt="imagem de café" style={{ zIndex: 1, marginTop: -20 }} />
     
       <View>
         <Text style={styles.title}>{data.name}</Text>

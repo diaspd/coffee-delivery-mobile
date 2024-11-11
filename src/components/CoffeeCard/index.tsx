@@ -1,7 +1,6 @@
 import { Pressable, Text, View, type TouchableOpacityProps } from "react-native";
 import { Image } from "react-native";
 
-import Coffe from '../../assets/coffees/expresso-tradicional.png'
 import type { ProductCardProps } from "../CoffeeListCard";
 
 import { styles } from "./styles";
@@ -13,7 +12,7 @@ type Props = TouchableOpacityProps & {
 export function CoffeeCard({ data, ...rest }: Props) {
   return (
     <Pressable {...rest}>
-      <Image source={Coffe} alt="imagem de café" style={{ zIndex: 1, alignSelf: 'center' }} />
+      <Image source={data.thumb} alt="imagem de café" style={{ zIndex: 1, alignSelf: 'center' }} />
         <View style={[styles.container]}>
       
         <View style={styles.tags}>
