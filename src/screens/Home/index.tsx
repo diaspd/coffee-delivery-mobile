@@ -14,13 +14,14 @@ import { CarouselComponent } from "../../components/CarouselComponent";
 import { CoffeeListCard, type ProductCardProps } from "../../components/CoffeeListCard";
 
 import { PRODUCTS } from "../../components/data/product";
+import { Pressable } from "react-native";
 
 export function Home() {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [productsNoFilter, setProductsNoFilter] = useState<ProductCardProps[]>([]);
   const [focus, setFocus] = useState(false);
 
-  const [flavorSelected, setBrandSelected] = useState('TRADICIONAL');
+  const [flavorSelected, setFlavorSelected] = useState('TRADICIONAL');
 
   const [inputValue, setInputValue] = useState('');
 
@@ -67,17 +68,17 @@ export function Home() {
         </Text>
 
         <View style={styles.tagWrapper}>
-          <View style={styles.tags}>
+          <Pressable style={styles.tags} onPress={() => setFlavorSelected('TRADICIONAL')}>
             <Text style={styles.tagText}>Tradicional</Text>
-          </View>
+          </Pressable>
 
-          <View style={styles.tags}>
+          <Pressable style={styles.tags} onPress={() => setFlavorSelected('DOCE')}>
             <Text style={styles.tagText}>doces</Text>
-          </View>
+          </Pressable>
 
-          <View style={styles.tags}>
+          <Pressable style={styles.tags} onPress={() => setFlavorSelected('ESPECIAL')}>
             <Text style={styles.tagText}>especiais</Text>
-          </View>
+          </Pressable>
         </View>
         </View>
 

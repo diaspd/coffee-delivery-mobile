@@ -1,7 +1,7 @@
 import { Pressable, Text, View, type TouchableOpacityProps } from "react-native";
 import { Image } from "react-native";
 
-import Coffe from '../../assets/coffees/Image.png'
+import Coffe from '../../assets/coffees/expresso-tradicional.png'
 import type { ProductCardProps } from "../CoffeeListCard";
 
 import { styles } from "./styles";

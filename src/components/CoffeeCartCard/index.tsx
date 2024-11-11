@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import { Trash } from "phosphor-react-native";
 
 import type { StorageCartProps } from "../../storage/cartStorage";
-import Coffe from '../../assets/coffees/Image.png'
+import Coffe from '../../assets/coffees/expresso-tradicional.png'
 
 import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
