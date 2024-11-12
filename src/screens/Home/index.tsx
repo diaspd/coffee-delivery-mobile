@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList, ScrollView, SectionList, Text, TextInput, View } from "react-native";
+import { ScrollView, SectionList, Text, TextInput, View } from "react-native";
 
 import { MagnifyingGlass } from "phosphor-react-native";
 
@@ -27,14 +27,6 @@ export function Home() {
 
   const navigationStack = useNavigation<AppRoutesProps>();
 
-  useEffect(() => {
-    const filtered = PRODUCTS.filter(product => product.tag === flavorSelected) as ProductCardProps[];
-    const notFiltered = PRODUCTS as ProductCardProps[];
-    
-    setProductsNoFilter(notFiltered)
-    setProducts(filtered);
-  }, [flavorSelected])
-
   const sections = [
     { title: "Tradicional", data: PRODUCTS.filter(product => product.tag === "TRADICIONAL") },
     { title: "Doce", data: PRODUCTS.filter(product => product.tag === "DOCE") },
@@ -44,6 +36,18 @@ export function Home() {
   const filteredSections = flavorSelected 
     ? sections.filter(section => section.title.toLowerCase() === flavorSelected.toLowerCase())
     : sections;
+
+  function handleTagPress(tag: string) {
+    setFlavorSelected(prevTag => prevTag === tag ? '' : tag);
+  };
+    
+  useEffect(() => {
+    const filtered = PRODUCTS.filter(product => product.tag === flavorSelected) as ProductCardProps[];
+    const notFiltered = PRODUCTS as ProductCardProps[];
+    
+    setProductsNoFilter(notFiltered)
+    setProducts(filtered);
+  }, [flavorSelected])
 
   return (
     <ScrollView>
@@ -78,16 +82,16 @@ export function Home() {
         </Text>
 
         <View style={styles.tagWrapper}>
-          <Pressable style={styles.tags} onPress={() => setFlavorSelected('TRADICIONAL')}>
-            <Text style={styles.tagText}>Tradicional</Text>
+          <Pressable style={flavorSelected === "TRADICIONAL" ? styles.tagsSelected : styles.tags} onPress={() => handleTagPress('TRADICIONAL')}>
+            <Text style={flavorSelected === "TRADICIONAL" ? styles.tagTextSelected : styles.tagText}>Tradicional</Text>
           </Pressable>
 
-          <Pressable style={styles.tags} onPress={() => setFlavorSelected('DOCE')}>
-            <Text style={styles.tagText}>doces</Text>
+          <Pressable style={flavorSelected === "DOCE" ? styles.tagsSelected : styles.tags} onPress={() => handleTagPress('DOCE')}>
+            <Text style={flavorSelected === "DOCE" ? styles.tagTextSelected : styles.tagText}>doces</Text>
           </Pressable>
 
-          <Pressable style={styles.tags} onPress={() => setFlavorSelected('ESPECIAL')}>
-            <Text style={styles.tagText}>especiais</Text>
+          <Pressable style={flavorSelected === "ESPECIAL" ? styles.tagsSelected : styles.tags} onPress={() => handleTagPress('ESPECIAL')}>
+            <Text style={flavorSelected === "ESPECIAL" ? styles.tagTextSelected : styles.tagText}>especiais</Text>
           </Pressable>
         </View>
         </View>

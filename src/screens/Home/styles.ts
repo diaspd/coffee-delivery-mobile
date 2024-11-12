@@ -68,8 +68,24 @@ export const styles = StyleSheet.create({
     borderColor: THEME.COLORS.PURPLE,
     borderWidth: 2,
   },
+  tagsSelected: {
+    flexWrap: 'wrap',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 9999,
+    marginTop: 18,
+    backgroundColor: THEME.COLORS.PURPLE,
+    borderColor: THEME.COLORS.PURPLE,
+    borderWidth: 2,
+  },
   tagText: {
     color: THEME.COLORS.PURPLE_DARK,
+    fontFamily: THEME.FONTS.BOLD_DEFAULT,
+    fontSize: THEME.FONT_SIZE.TAG,
+    textTransform: 'uppercase'
+  },
+  tagTextSelected: {
+    color: THEME.COLORS.WHITE,
     fontFamily: THEME.FONTS.BOLD_DEFAULT,
     fontSize: THEME.FONT_SIZE.TAG,
     textTransform: 'uppercase'
