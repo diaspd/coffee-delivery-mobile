@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ScrollView, SectionList, Text, TextInput, View, Pressable } from "react-native";
+import { useState } from "react";
+import { ScrollView, SectionList, Text, TextInput, View, Pressable, Image } from "react-native";
 
 import { MagnifyingGlass } from "phosphor-react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -13,6 +13,7 @@ import { CarouselComponent } from "../../components/CarouselComponent";
 import { CoffeeListCard, type ProductCardProps } from "../../components/CoffeeListCard";
 
 import { PRODUCTS } from "../../components/data/product";
+import CoffeeBg from "../../assets/coffee-bg.png";
 
 export function Home() {
   const [products, setProducts] = useState<ProductCardProps[]>(PRODUCTS);
@@ -43,8 +44,8 @@ export function Home() {
   function handleTagPress(tag: string) {
     setFlavorSelected(prevTags =>
       prevTags.includes(tag)
-        ? prevTags.filter(t => t !== tag) 
-        : [...prevTags, tag]              
+        ? prevTags.filter(t => t !== tag)
+        : [...prevTags, tag]
     );
   }
 
@@ -54,6 +55,7 @@ export function Home() {
 
   return (
     <ScrollView>
+
       <View style={styles.intro}>
         <Header hasCart />
         <Text style={styles.title}>Encontre o café perfeito para qualquer hora do dia</Text>
@@ -74,6 +76,8 @@ export function Home() {
             keyboardType="default"
           />
         </View>
+
+        <Image source={CoffeeBg} style={{ marginLeft: 'auto', marginRight: 10 }} resizeMode="contain" />
       </View>
 
       <View style={styles.coffeeList}>
@@ -121,6 +125,7 @@ export function Home() {
             <Text style={styles.listTitle}>{section.title}</Text>
           )}
           ListEmptyComponent={<Text style={styles.emptyMessage}>Nenhum café encontrado</Text>}
+          scrollEnabled={false}
         />
       </View>
     </ScrollView>
