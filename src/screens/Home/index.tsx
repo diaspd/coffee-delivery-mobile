@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList, ScrollView, Text, TextInput, View } from "react-native";
+import { FlatList, ScrollView, SectionList, Text, TextInput, View } from "react-native";
 
 import { MagnifyingGlass } from "phosphor-react-native";
 
@@ -21,7 +21,7 @@ export function Home() {
   const [productsNoFilter, setProductsNoFilter] = useState<ProductCardProps[]>([]);
   const [focus, setFocus] = useState(false);
 
-  const [flavorSelected, setFlavorSelected] = useState('TRADICIONAL');
+  const [flavorSelected, setFlavorSelected] = useState('');
 
   const [inputValue, setInputValue] = useState('');
 
@@ -34,6 +34,16 @@ export function Home() {
     setProductsNoFilter(notFiltered)
     setProducts(filtered);
   }, [flavorSelected])
+
+  const sections = [
+    { title: "Tradicional", data: PRODUCTS.filter(product => product.tag === "TRADICIONAL") },
+    { title: "Doce", data: PRODUCTS.filter(product => product.tag === "DOCE") },
+    { title: "Especial", data: PRODUCTS.filter(product => product.tag === "ESPECIAL") },
+  ];
+
+  const filteredSections = flavorSelected 
+    ? sections.filter(section => section.title.toLowerCase() === flavorSelected.toLowerCase())
+    : sections;
 
   return (
     <ScrollView>
@@ -82,11 +92,11 @@ export function Home() {
         </View>
         </View>
 
-        <FlatList 
-          data={products}
+        <SectionList 
+          sections={filteredSections}
           keyExtractor={item => item.id}
           renderItem={({ item }) => <CoffeeListCard data={item} onPress={() => navigationStack.navigate('product', { productId: item.id })} /> }
-          ListHeaderComponent={<Text style={styles.listTitle}>Tradicionais</Text>}
+          renderSectionHeader={({ section }) => (<Text style={styles.listTitle}>{section.title}</Text>)}
         />
       </View>
     </ScrollView>

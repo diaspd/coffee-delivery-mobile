@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
   tagWrapper: {
     flexDirection: 'row',
     gap: 4,
-    marginBottom: 16
+    marginBottom: 16,
   },
   tags: {
     flexWrap: 'wrap',

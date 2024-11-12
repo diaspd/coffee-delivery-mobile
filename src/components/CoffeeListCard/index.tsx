@@ -8,7 +8,7 @@ export type ProductCardProps = {
   tag: string;
   name: string;
   price: string;
-  thumb: ImageSourcePropType | undefined;
+  thumb: ImageSourcePropType;
   description: string;
 }
 
