@@ -15,8 +15,7 @@ import { CoffeeListCard, type ProductCardProps } from "../../components/CoffeeLi
 import { PRODUCTS } from "../../components/data/product";
 
 export function Home() {
-  const [products, setProducts] = useState<ProductCardProps[]>([]);
-  const [productsNoFilter, setProductsNoFilter] = useState<ProductCardProps[]>([]);
+  const [products, setProducts] = useState<ProductCardProps[]>(PRODUCTS);
   const [focus, setFocus] = useState(false);
 
   const [flavorSelected, setFlavorSelected] = useState<string[]>([]);
@@ -30,9 +29,16 @@ export function Home() {
     { title: "Especial", data: PRODUCTS.filter(product => product.tag === "ESPECIAL") },
   ];
 
-  const filteredSections = flavorSelected.length > 0
-    ? sections.filter(section => flavorSelected.includes(section.title.toUpperCase()))
-    : sections;
+  const filteredSections = sections
+    .map(section => ({
+      ...section,
+      data: section.data.filter(product => {
+        const matchesTag = flavorSelected.length === 0 || flavorSelected.includes(product.tag);
+        const matchesSearch = product.name.toLowerCase().includes(inputValue.toLowerCase());
+        return matchesTag && matchesSearch;
+      })
+    }))
+    .filter(section => section.data.length > 0);
 
   function handleTagPress(tag: string) {
     setFlavorSelected(prevTags =>
@@ -42,14 +48,9 @@ export function Home() {
     );
   }
 
-  useEffect(() => {
-    const filtered = flavorSelected.length > 0
-      ? PRODUCTS.filter(product => flavorSelected.includes(product.tag))
-      : PRODUCTS;
-
-    setProductsNoFilter(PRODUCTS);
-    setProducts(filtered);
-  }, [flavorSelected]);
+  function handleSearch(text: string) {
+    setInputValue(text);
+  }
 
   return (
     <ScrollView>
@@ -66,9 +67,9 @@ export function Home() {
             placeholder="Pesquisar"
             placeholderTextColor={THEME.COLORS.GREY_400}
             onPressIn={() => setFocus(true)}
-            onChange={() => setFocus(false)}
+            onBlur={() => setFocus(false)}
             value={inputValue}
-            onChangeText={setInputValue}
+            onChangeText={handleSearch}
             style={{ color: THEME.COLORS.GREY_700 }}
             keyboardType="default"
           />
@@ -77,7 +78,7 @@ export function Home() {
 
       <View style={styles.coffeeList}>
         <View style={styles.carousel}>
-          <CarouselComponent data={productsNoFilter} />
+          <CarouselComponent data={products} />
         </View>
 
         <View style={styles.coffeeListWrapper}>
@@ -107,16 +108,19 @@ export function Home() {
           </View>
         </View>
 
-        <SectionList
+        <SectionList 
           sections={filteredSections}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <CoffeeListCard data={item} onPress={() => navigationStack.navigate('product', { productId: item.id })} />
+            <CoffeeListCard 
+              data={item} 
+              onPress={() => navigationStack.navigate('product', { productId: item.id })} 
+            />
           )}
           renderSectionHeader={({ section }) => (
             <Text style={styles.listTitle}>{section.title}</Text>
           )}
-          scrollEnabled={false}
+          ListEmptyComponent={<Text style={styles.emptyMessage}>Nenhum café encontrado</Text>}
         />
       </View>
     </ScrollView>
