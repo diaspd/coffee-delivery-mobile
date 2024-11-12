@@ -116,6 +116,7 @@ export function Home() {
           renderSectionHeader={({ section }) => (
             <Text style={styles.listTitle}>{section.title}</Text>
           )}
+          scrollEnabled={false}
         />
       </View>
     </ScrollView>
