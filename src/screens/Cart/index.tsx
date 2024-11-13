@@ -21,6 +21,11 @@ export function Cart() {
     }
   }
 
+  const totalPrice = cart?.reduce((total, { price, quantity }) => 
+    total + parseFloat(price.replace(',', '.')) * quantity, 0);
+  
+  const formattedTotalPrice = totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2);
+
   return (
     <View style={styles.container}>
       <Header hasGoBack />
@@ -43,7 +48,7 @@ export function Cart() {
           </Text>
          
           <Text style={styles.price}> 
-            R$ 9,90
+            {formattedTotalPrice}
           </Text>
         </View>
 
