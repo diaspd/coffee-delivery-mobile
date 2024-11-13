@@ -4,7 +4,7 @@ import { Image } from "react-native";
 
 export type ProductCardProps = {
   id: string;
-  ml?: number;
+  ml?: string;
   tag: string;
   name: string;
   price: string;

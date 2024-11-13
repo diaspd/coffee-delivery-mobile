@@ -6,8 +6,8 @@ const CART_STORAGE = '@COFFEE_DELIVERY_CART';
 export type StorageCartProps = {
   id: string;
   name: string;
-  ml: number;
-  price: number;
+  ml: string;
+  price: string;
   quantity: number;
   image: ImageSourcePropType;
 }

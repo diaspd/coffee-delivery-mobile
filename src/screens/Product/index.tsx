@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Text, View, Image, Pressable } from "react-native";
 
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Minus, Plus } from "phosphor-react-native";
 
 import { styles } from "./styles";
@@ -12,6 +12,8 @@ import { THEME } from "../../styles/theme";
 import { Header } from "../../components/Header";
 import { PRODUCTS } from "../../components/data/product";
 import type { ProductCardProps } from "../../components/CoffeeListCard";
+import type { AppRoutesProps } from "../../routes/app.routes";
+import { useCart } from "../../hooks/useCart";
 
 type RouteParamsProps = {
   productId: string;
@@ -22,16 +24,39 @@ export function Product() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const route = useRoute();
+  const navigationStack = useNavigation<AppRoutesProps>();
+
   const { productId } = route.params as RouteParamsProps;
+
+  const { addProductCart } = useCart();
+
+  const handleSizeSelect = (size: string) => {
+    setSelectedSize(size);
+  };
+
+  async function handleAddProductToCart() {
+    try {
+      await addProductCart({
+        id: product.id,
+        name: product.name,
+        image: product.thumb,
+        price: product.price,
+        ml: product.ml,
+        quantity: 1
+      });
+
+      console.log('Produto adicionado no carrinho');
+
+      navigationStack.navigate('cart');
+    } catch (error) {
+     console.error(error);
+    }
+  }
 
   useEffect(() => {
     const selected = PRODUCTS.find(item => item.id === productId) as ProductCardProps;
     setProduct(selected);
   }, [productId]);
-
-  const handleSizeSelect = (size: string) => {
-    setSelectedSize(size);
-  };
 
   return (
     <>
@@ -85,7 +110,7 @@ export function Product() {
             </Pressable>
           </View>
 
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} onPress={handleAddProductToCart}>
             <Text style={styles.buttonText}>Adicionar</Text>
           </Pressable>
         </View>
