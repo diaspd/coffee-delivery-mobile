@@ -1,4 +1,4 @@
-import { FlatList, Text, View, Pressable } from "react-native";
+import { FlatList, Text, View, Pressable, TouchableOpacity } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -47,9 +47,9 @@ export function Cart() {
           </Text>
         </View>
 
-        <Pressable style={styles.button} disabled={cart.length === 0} onPress={() => navigationStack.navigate('finish')}>
+        <TouchableOpacity activeOpacity={0.6} style={cart.length === 0 ? styles.buttonDisabled : styles.button} disabled={cart.length === 0} onPress={() => navigationStack.navigate('finish')}>
           <Text style={styles.buttonText}>confirmar pedido</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   )

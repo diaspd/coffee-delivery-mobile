@@ -48,7 +48,18 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     height: 46,
 
-    borderRadius: 6
+    borderRadius: 6 
+  },
+  buttonDisabled: {
+    backgroundColor: THEME.COLORS.YELLOW_DARK,
+    opacity: 0.6,
+
+    width: '100%',
+    paddingVertical: 12,
+    paddingHorizontal: 8,
+    height: 46,
+
+    borderRadius: 6 
   },
   buttonText: {
     color: THEME.COLORS.WHITE,
