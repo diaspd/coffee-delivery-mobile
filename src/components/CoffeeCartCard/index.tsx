@@ -25,7 +25,7 @@ export function CoffeeCartCard({ data, onRemove }: Props) {
           <Text style={styles.price}>R$ {data.price}</Text>
         </View>
 
-        <Text style={styles.millilitres}>{data.ml}ml</Text>
+        <Text style={styles.millilitres}>{data.ml}</Text>
 
         <View style={styles.actions}>
           <Counter />

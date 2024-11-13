@@ -47,7 +47,7 @@ export function Cart() {
           </Text>
         </View>
 
-        <Pressable style={styles.button} onPress={() => navigationStack.navigate('finish')}>
+        <Pressable style={styles.button} disabled={cart.length === 0} onPress={() => navigationStack.navigate('finish')}>
           <Text style={styles.buttonText}>confirmar pedido</Text>
         </Pressable>
       </View>

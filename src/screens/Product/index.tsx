@@ -41,7 +41,7 @@ export function Product() {
         name: product.name,
         image: product.thumb,
         price: product.price,
-        ml: product.ml,
+        ml: selectedSize,
         quantity: 1
       });
 
