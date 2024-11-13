@@ -11,7 +11,15 @@ export const styles = StyleSheet.create({
     borderColor: THEME.COLORS.GREY_500,
     borderTopWidth: 1,
     borderBottomWidth: 1
-  }, 
+  },
+  emptyMessage: {
+    color: THEME.COLORS.GREY_300,
+    fontFamily: THEME.FONTS.BOLD,
+    fontSize: THEME.FONT_SIZE.TEXT_MD,
+    textAlign: 'center',
+    marginHorizontal: 36,
+    marginTop: 54,
+  },
   footer: {
     width: "100%",
     height: 160,

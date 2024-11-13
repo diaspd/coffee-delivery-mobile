@@ -8,6 +8,8 @@ import { Header } from "../../components/Header";
 import { CoffeeCartCard } from "../../components/CoffeeCartCard";
 import type { AppRoutesProps } from "../../routes/app.routes";
 import { useCart } from "../../hooks/useCart";
+import { Coffee, CoffeeBean } from "phosphor-react-native";
+import { THEME } from "../../styles/theme";
 
 export function Cart() {
   const navigationStack = useNavigation<AppRoutesProps>();
@@ -38,7 +40,13 @@ export function Cart() {
           <View style={styles.coffeeCartCardwrapper}>
             <CoffeeCartCard data={item} onRemove={() => handleItemRemove(item.id)} />
           </View>
-        ) }
+        )}
+        ListEmptyComponent={
+          <View>
+            <Text style={styles.emptyMessage}>Você ainda não adicionou nenhum café ao carrinho...</Text>
+            <Coffee color={THEME.COLORS.GREY_300} style={{ alignSelf: 'center', marginTop: 10 }} size={36}/>
+          </View>
+        }
       />
 
       <View style={styles.footer}>

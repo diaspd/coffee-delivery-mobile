@@ -25,6 +25,6 @@ export const styles = StyleSheet.create({
     fontSize: THEME.FONT_SIZE.TITLE_SM,
     fontFamily: THEME.FONTS.BOLD,
     marginRight: "auto", 
-    marginLeft: 130
+    marginLeft: 120
   }
 });
