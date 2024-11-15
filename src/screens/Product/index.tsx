@@ -110,7 +110,7 @@ export function Product() {
             </Pressable>
           </View>
 
-          <Pressable style={styles.button} onPress={handleAddProductToCart}>
+          <Pressable style={!selectedSize ? styles.buttonDisabled : styles.button} onPress={handleAddProductToCart} disabled={!selectedSize}>
             <Text style={styles.buttonText}>Adicionar</Text>
           </Pressable>
         </View>

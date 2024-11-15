@@ -131,6 +131,19 @@ export const styles = StyleSheet.create({
 
     borderRadius: 6
   },
+  buttonDisabled: {
+    backgroundColor: THEME.COLORS.PURPLE_DARK,
+    
+    paddingVertical: 12,
+    paddingHorizontal: 64,
+    height: 54,
+    opacity: 0.6,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    borderRadius: 6
+  },
   buttonText: {
     color: THEME.COLORS.WHITE,
     fontSize: THEME.FONT_SIZE.BUTTON,
