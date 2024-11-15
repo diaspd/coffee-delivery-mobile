@@ -28,7 +28,7 @@ export function CoffeeCartCard({ data, onRemove }: Props) {
         <Text style={styles.millilitres}>{data.ml}</Text>
 
         <View style={styles.actions}>
-          <Counter />
+          <Counter data={data.quantity} />
           <TouchableOpacity style={styles.removeButtom} onPress={onRemove}>
             <Trash color={THEME.COLORS.PURPLE} size={20}/>
           </TouchableOpacity>

@@ -20,6 +20,7 @@ type RouteParamsProps = {
 }
 
 export function Product() {
+
   const [product, setProduct] = useState<ProductCardProps>({} as ProductCardProps);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
@@ -28,7 +29,7 @@ export function Product() {
 
   const { productId } = route.params as RouteParamsProps;
 
-  const { addProductCart } = useCart();
+  const { addProductCart, count, increment, decrement } = useCart();
 
   const handleSizeSelect = (size: string) => {
     setSelectedSize(size);
@@ -42,7 +43,7 @@ export function Product() {
         image: product.thumb,
         price: product.price,
         ml: selectedSize,
-        quantity: 1
+        quantity: count
       });
 
       console.log('Produto adicionado no carrinho');
@@ -101,11 +102,11 @@ export function Product() {
 
         <View style={styles.counterWrapper}>
           <View style={styles.counter}>
-            <Pressable>
+            <Pressable onPress={decrement}>
               <Minus size={24} color={THEME.COLORS.PURPLE} />
             </Pressable>
-            <Text style={styles.text}>1</Text>
-            <Pressable>
+            <Text style={styles.text}>{count}</Text>
+            <Pressable onPress={increment}>
               <Plus size={24} color={THEME.COLORS.PURPLE} />
             </Pressable>
           </View>
