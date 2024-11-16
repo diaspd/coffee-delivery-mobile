@@ -5,14 +5,16 @@ import {
   storageProductSave,
   storageProductRemove,
   storageProductGetAll,
+  storageProductRemoveAll
 } from '../storage/cartStorage';
 
 export type CartContextDataProps = {
   addProductCart: (newProduct: StorageCartProps) => Promise<void>;
   removeProductCart: (productId: string) => Promise<void>;
-  cart: StorageCartProps[];
+  handleStorageProductRemoveAll: () => void;
   increment: () => void;
   decrement: () => void;
+  cart: StorageCartProps[];
   count: number;
 }
 
@@ -52,6 +54,16 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     }
   }
 
+  async function handleStorageProductRemoveAll() {
+    try {
+      await storageProductRemoveAll(); 
+      setCart([]); 
+      console.log('Cart cleared!');
+    } catch (error) {
+      console.error('Failed to clear the cart:', error);
+    }
+  }
+
   useEffect(() => {
     storageProductGetAll()
       .then(products => setCart(products))
@@ -61,11 +73,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   return (
     <CartContext.Provider value={{
       cart,
+      count,
       addProductCart,
       removeProductCart,
       increment,
       decrement,
-      count
+      handleStorageProductRemoveAll
     }}>
       {children}
     </CartContext.Provider>

@@ -62,3 +62,11 @@ export async function storageProductRemove(productId: string) {
     throw error;
   }
 }
+
+export async function storageProductRemoveAll() {
+  try {
+    await AsyncStorage.clear();
+  } catch (error) {
+    console.error('Failed to clear storage:', error);
+  }
+}

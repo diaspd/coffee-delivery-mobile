@@ -46,8 +46,6 @@ export function Product() {
         quantity: count
       });
 
-      console.log('Produto adicionado no carrinho');
-
       navigationStack.navigate('cart');
     } catch (error) {
      console.error(error);

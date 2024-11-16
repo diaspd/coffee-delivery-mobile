@@ -1,19 +1,22 @@
-import { FlatList, Text, View, Pressable, TouchableOpacity } from "react-native";
+import { FlatList, Text, View, TouchableOpacity } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
+import { Coffee } from "phosphor-react-native";
 
 import { styles } from "./styles";
-import { Header } from "../../components/Header";
 
-import { CoffeeCartCard } from "../../components/CoffeeCartCard";
 import type { AppRoutesProps } from "../../routes/app.routes";
+
 import { useCart } from "../../hooks/useCart";
-import { Coffee, CoffeeBean } from "phosphor-react-native";
+
+import { Header } from "../../components/Header";
+import { CoffeeCartCard } from "../../components/CoffeeCartCard";
+
 import { THEME } from "../../styles/theme";
 
 export function Cart() {
   const navigationStack = useNavigation<AppRoutesProps>();
-  const { cart, removeProductCart } = useCart();
+  const { cart, removeProductCart, handleStorageProductRemoveAll } = useCart();
 
   async function handleItemRemove(productId: string) {
     try {
@@ -24,9 +27,15 @@ export function Cart() {
   }
 
   const totalPrice = cart?.reduce((total, { price, quantity }) => 
-    total + parseFloat(price.replace(',', '.')) * quantity, 0);
+    total + parseFloat(price?.replace(',', '.')) * quantity, 0);
   
   const formattedTotalPrice = totalPrice % 1 === 0 ? totalPrice : totalPrice.toFixed(2);
+
+  async function handleGoToFinishScreen() {
+    await handleStorageProductRemoveAll()
+
+    navigationStack.navigate('finish')
+  }
 
   return (
     <View style={styles.container}>
@@ -60,7 +69,12 @@ export function Cart() {
           </Text>
         </View>
 
-        <TouchableOpacity activeOpacity={0.6} style={cart.length === 0 ? styles.buttonDisabled : styles.button} disabled={cart.length === 0} onPress={() => navigationStack.navigate('finish')}>
+        <TouchableOpacity 
+          activeOpacity={0.6} 
+          style={cart.length === 0 ? styles.buttonDisabled : styles.button} 
+          disabled={cart.length === 0} 
+          onPress={handleGoToFinishScreen}
+        >
           <Text style={styles.buttonText}>confirmar pedido</Text>
         </TouchableOpacity>
       </View>
