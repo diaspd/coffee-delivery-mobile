@@ -66,7 +66,7 @@ export function Product() {
         image: product.thumb,
         price: product.price,
         ml: selectedSize,
-        quantity: 1,
+        quantity: quantity,
       });
     }
 
@@ -140,9 +140,9 @@ export function Product() {
           </View>
 
           <Pressable
-            style={!selectedSize ? styles.buttonDisabled : styles.button}
+            style={!selectedSize || quantity === 0 ? styles.buttonDisabled : styles.button}
             onPress={handleAddProductToCart}
-            disabled={!selectedSize}
+            disabled={!selectedSize || quantity === 0}
           >
             <Text style={styles.buttonText}>Adicionar</Text>
           </Pressable>
