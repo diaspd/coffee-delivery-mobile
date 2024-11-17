@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.GREY_400,
     fontSize: THEME.FONT_SIZE.TEXT_XS,
     fontFamily: THEME.FONTS.REGULAR, 
-    maxWidth: 220
+    maxWidth: 210
   },
   dollar: {
     color: THEME.COLORS.YELLOW,
