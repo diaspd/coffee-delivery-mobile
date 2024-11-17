@@ -12,10 +12,9 @@ export type CartContextDataProps = {
   addProductCart: (newProduct: StorageCartProps) => Promise<void>;
   removeProductCart: (productId: string) => Promise<void>;
   handleStorageProductRemoveAll: () => void;
-  increment: () => void;
-  decrement: () => void;
+  increment: (productId: string) => void;
+  decrement: (productId: string) => void;
   cart: StorageCartProps[];
-  count: number;
 }
 
 type CartContextProviderProps = {
@@ -26,15 +25,24 @@ export const CartContext = createContext<CartContextDataProps>({} as CartContext
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cart, setCart] = useState<StorageCartProps[]>([]);
-  const [count, setCount] = useState(1);
   
-  function increment() {
-    setCount(prevCount => prevCount + 1);
-  };
-
-  function decrement() {
-    setCount(prevCount => (prevCount > 1 ? prevCount - 1 : 1));
-  };
+  function increment(productId: string) {
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  }
+  
+  function decrement(productId: string) {
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === productId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  }
 
   async function addProductCart(newProduct: StorageCartProps) {
     try {
@@ -73,7 +81,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   return (
     <CartContext.Provider value={{
       cart,
-      count,
       addProductCart,
       removeProductCart,
       increment,

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { Text, View, Image, Pressable, ScrollView } from "react-native";
-
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Minus, Plus } from "phosphor-react-native";
 
 import { styles } from "./styles";
-
 import Coffe from '../../assets/coffees/coffee-big.png';
 import { THEME } from "../../styles/theme";
 
@@ -17,7 +15,7 @@ import { useCart } from "../../hooks/useCart";
 
 type RouteParamsProps = {
   productId: string;
-}
+};
 
 export function Product() {
   const [product, setProduct] = useState<ProductCardProps>({} as ProductCardProps);
@@ -28,28 +26,52 @@ export function Product() {
 
   const { productId } = route.params as RouteParamsProps;
 
-  const { addProductCart, count, increment, decrement } = useCart();
+  const { addProductCart, cart, increment, decrement } = useCart();
 
   const handleSizeSelect = (size: string) => {
     setSelectedSize(size);
   };
 
-  async function handleAddProductToCart() {
-    try {
-      await addProductCart({
-        id: product.id,
+  const cartItem = cart.find(item => item.name === product.name);
+  const quantity = cartItem?.quantity || 0;
+
+  const handleIncrement = () => {
+    if (cartItem) {
+      increment(cartItem.id);
+    } else {
+      addProductCart({
+        id: `${productId}-${Date.now()}`,
+        productId,
         name: product.name,
         image: product.thumb,
         price: product.price,
         ml: selectedSize,
-        quantity: count
+        quantity: 1,
       });
-
-      navigationStack.navigate('cart');
-    } catch (error) {
-     console.error(error);
     }
-  }
+  };
+
+  const handleDecrement = () => {
+    if (cartItem && cartItem.quantity > 0) {
+      decrement(cartItem.id);
+    }
+  };
+
+  const handleAddProductToCart = () => {
+    if (!cartItem) {
+      addProductCart({
+        id: `${productId}-${Date.now()}`,
+        productId,
+        name: product.name,
+        image: product.thumb,
+        price: product.price,
+        ml: selectedSize,
+        quantity: 1,
+      });
+    }
+
+    navigationStack.navigate('cart');
+  };
 
   useEffect(() => {
     const selected = PRODUCTS.find(item => item.id === productId) as ProductCardProps;
@@ -71,7 +93,6 @@ export function Product() {
           <Text style={styles.dolar}>R$
             <Text style={styles.price}>{product.price}</Text>
           </Text>
-          
         </View>
 
         <Text style={styles.description}>{product.description}</Text>
@@ -92,23 +113,37 @@ export function Product() {
                 selectedSize === size && { borderColor: THEME.COLORS.PURPLE, borderWidth: 1.5 }
               ]}
             >
-              <Text style={[styles.optionText, selectedSize === size && { color: THEME.COLORS.PURPLE, fontFamily: THEME.FONTS.BOLD_DEFAULT }]}>{size}</Text>
+              <Text
+                style={[
+                  styles.optionText,
+                  selectedSize === size && {
+                    color: THEME.COLORS.PURPLE,
+                    fontFamily: THEME.FONTS.BOLD_DEFAULT
+                  }
+                ]}
+              >
+                {size}
+              </Text>
             </Pressable>
           ))}
         </View>
 
         <View style={styles.counterWrapper}>
           <View style={styles.counter}>
-            <Pressable onPress={decrement}>
+            <Pressable onPress={handleDecrement}>
               <Minus size={24} color={THEME.COLORS.PURPLE} />
             </Pressable>
-            <Text style={styles.text}>{count}</Text>
-            <Pressable onPress={increment}>
+            <Text style={styles.text}>{quantity}</Text>
+            <Pressable onPress={handleIncrement}>
               <Plus size={24} color={THEME.COLORS.PURPLE} />
             </Pressable>
           </View>
 
-          <Pressable style={!selectedSize ? styles.buttonDisabled : styles.button} onPress={handleAddProductToCart} disabled={!selectedSize}>
+          <Pressable
+            style={!selectedSize ? styles.buttonDisabled : styles.button}
+            onPress={handleAddProductToCart}
+            disabled={!selectedSize}
+          >
             <Text style={styles.buttonText}>Adicionar</Text>
           </Pressable>
         </View>

@@ -5,6 +5,7 @@ const CART_STORAGE = '@COFFEE_DELIVERY_CART';
 
 export type StorageCartProps = {
   id: string;
+  productId?: string;
   name: string;
   ml: string | null;
   price: string;
