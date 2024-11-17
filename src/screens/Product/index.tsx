@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, View, Image, Pressable } from "react-native";
+import { Text, View, Image, Pressable, ScrollView } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Minus, Plus } from "phosphor-react-native";
@@ -20,7 +20,6 @@ type RouteParamsProps = {
 }
 
 export function Product() {
-
   const [product, setProduct] = useState<ProductCardProps>({} as ProductCardProps);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
@@ -58,7 +57,7 @@ export function Product() {
   }, [productId]);
 
   return (
-    <>
+    <ScrollView>
       <View style={styles.intro}>
         <Header hasCart hasGoBack />
 
@@ -114,6 +113,6 @@ export function Product() {
           </Pressable>
         </View>
       </View>
-    </>
+    </ScrollView>
   );
 }
