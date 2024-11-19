@@ -1,6 +1,9 @@
-import { Pressable, Text, View, type ImageSourcePropType, type TouchableOpacityProps } from "react-native";
+import React from "react";
+import { Text, Image, View, type ImageSourcePropType, type TouchableOpacityProps, TouchableOpacity } from "react-native";
+import Animated, { FadeInUp, FadeOut } from "react-native-reanimated";
 import { styles } from "./styles";
-import { Image } from "react-native";
+
+const TouchableOpacityAnimated = Animated.createAnimatedComponent(TouchableOpacity);
 
 export type ProductCardProps = {
   id: string;
@@ -14,11 +17,13 @@ export type ProductCardProps = {
 
 type Props = TouchableOpacityProps & {
   data: ProductCardProps;
+  index: number;
 }
 
-export function CoffeeListCard({ data, ...rest }: Props) {
+export function CoffeeListCard({ data, index, ...rest }: Props) {
   return (
-    <Pressable style={styles.container} {...rest}>
+    <TouchableOpacityAnimated style={styles.container} entering={FadeInUp.delay(index * 100)} exiting={FadeOut}
+    {...rest}>
       <Image source={data.thumb} alt="imagem de café" style={{ zIndex: 1, marginTop: -20 }} />
     
       <View>
@@ -30,6 +35,6 @@ export function CoffeeListCard({ data, ...rest }: Props) {
           <Text style={styles.price}>{data.price}</Text>
         </View>
       </View>
-    </Pressable>
+    </TouchableOpacityAnimated>
   )
 }

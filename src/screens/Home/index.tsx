@@ -115,9 +115,10 @@ export function Home() {
         <SectionList 
           sections={filteredSections}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <CoffeeListCard 
               data={item} 
+              index={index}
               onPress={() => navigationStack.navigate('product', { productId: item.id })} 
             />
           )}
