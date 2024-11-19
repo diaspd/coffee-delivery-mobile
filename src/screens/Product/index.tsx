@@ -12,6 +12,7 @@ import { PRODUCTS } from "../../components/data/product";
 import type { ProductCardProps } from "../../components/CoffeeListCard";
 import type { AppRoutesProps } from "../../routes/app.routes";
 import { useCart } from "../../hooks/useCart";
+import { Smoke } from "../../components/Smoke";
 
 type RouteParamsProps = {
   productId: string;
@@ -99,8 +100,11 @@ export function Product() {
       </View>
 
       <View style={styles.footer}>
-        <Image source={Coffe} style={{ marginTop: -245, zIndex: 15 }} />
-
+        <View style={{ marginTop: -480, zIndex: 10 }} >
+          <Smoke />
+          <Image source={Coffe} style={{ marginTop: -245 }}/>
+        </View>
+        
         <Text style={styles.footerTitle}>Selecione o tamanho:</Text>
 
         <View style={styles.optionsWrapper}>
