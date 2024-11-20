@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { ScrollView, SectionList, Text, TextInput, View, Pressable, Image } from "react-native";
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
 import { MagnifyingGlass } from "phosphor-react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -18,9 +20,8 @@ import CoffeeBg from "../../assets/coffee-bg.png";
 export function Home() {
   const [products, setProducts] = useState<ProductCardProps[]>(PRODUCTS);
   const [focus, setFocus] = useState(false);
-
   const [flavorSelected, setFlavorSelected] = useState<string[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const navigationStack = useNavigation<AppRoutesProps>();
 
@@ -37,7 +38,7 @@ export function Home() {
         const matchesTag = flavorSelected.length === 0 || flavorSelected.includes(product.tag);
         const matchesSearch = product.name.toLowerCase().includes(inputValue.toLowerCase());
         return matchesTag && matchesSearch;
-      })
+      }),
     }))
     .filter(section => section.data.length > 0);
 
@@ -53,13 +54,21 @@ export function Home() {
     setInputValue(text);
   }
 
+  const translateX = useSharedValue(500);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
+
+  useEffect(() => {
+    translateX.value = withTiming(0, { duration: 1000 });
+  }, [inputValue]);
+
   return (
     <ScrollView>
-
       <View style={styles.intro}>
         <Header hasCart />
         <Text style={styles.title}>Encontre o café perfeito para qualquer hora do dia</Text>
-
         <View style={styles.input}>
           <MagnifyingGlass 
             color={focus ? THEME.COLORS.YELLOW : inputValue.length > 0 ? THEME.COLORS.YELLOW_DARK : THEME.COLORS.GREY_400}
@@ -76,50 +85,49 @@ export function Home() {
             keyboardType="default"
           />
         </View>
-
         <Image source={CoffeeBg} style={{ marginLeft: 'auto', marginRight: 10 }} resizeMode="contain" />
       </View>
-
       <View style={styles.coffeeList}>
-        <View style={styles.carousel}>
+        <Animated.View style={[styles.carousel, animatedStyle]}>
           <CarouselComponent data={products} />
-        </View>
-
+        </Animated.View>
         <View style={styles.coffeeListWrapper}>
           <Text style={styles.coffeeListTitle}>Nossos cafés</Text>
-
           <View style={styles.tagWrapper}>
             <Pressable
               style={flavorSelected.includes("TRADICIONAL") ? styles.tagsSelected : styles.tags}
-              onPress={() => handleTagPress('TRADICIONAL')}
+              onPress={() => handleTagPress("TRADICIONAL")}
             >
-              <Text style={flavorSelected.includes("TRADICIONAL") ? styles.tagTextSelected : styles.tagText}>Tradicional</Text>
+              <Text style={flavorSelected.includes("TRADICIONAL") ? styles.tagTextSelected : styles.tagText}>
+                Tradicional
+              </Text>
             </Pressable>
-
             <Pressable
               style={flavorSelected.includes("DOCE") ? styles.tagsSelected : styles.tags}
-              onPress={() => handleTagPress('DOCE')}
+              onPress={() => handleTagPress("DOCE")}
             >
-              <Text style={flavorSelected.includes("DOCE") ? styles.tagTextSelected : styles.tagText}>doces</Text>
+              <Text style={flavorSelected.includes("DOCE") ? styles.tagTextSelected : styles.tagText}>
+                doces
+              </Text>
             </Pressable>
-
             <Pressable
               style={flavorSelected.includes("ESPECIAL") ? styles.tagsSelected : styles.tags}
-              onPress={() => handleTagPress('ESPECIAL')}
+              onPress={() => handleTagPress("ESPECIAL")}
             >
-              <Text style={flavorSelected.includes("ESPECIAL") ? styles.tagTextSelected : styles.tagText}>especiais</Text>
+              <Text style={flavorSelected.includes("ESPECIAL") ? styles.tagTextSelected : styles.tagText}>
+                especiais
+              </Text>
             </Pressable>
           </View>
         </View>
-
-        <SectionList 
+        <SectionList
           sections={filteredSections}
           keyExtractor={item => item.id}
           renderItem={({ item, index }) => (
-            <CoffeeListCard 
-              data={item} 
+            <CoffeeListCard
+              data={item}
               index={index}
-              onPress={() => navigationStack.navigate('product', { productId: item.id })} 
+              onPress={() => navigationStack.navigate("product", { productId: item.id })}
             />
           )}
           renderSectionHeader={({ section }) => (
