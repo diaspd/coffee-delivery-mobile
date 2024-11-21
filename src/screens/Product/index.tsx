@@ -13,6 +13,7 @@ import type { ProductCardProps } from "../../components/CoffeeListCard";
 import type { AppRoutesProps } from "../../routes/app.routes";
 import { useCart } from "../../hooks/useCart";
 import { Smoke } from "../../components/Smoke";
+import { Notification } from "../../components/Notificaiton";
 
 type RouteParamsProps = {
   productId: string;

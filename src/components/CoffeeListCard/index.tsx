@@ -13,6 +13,7 @@ export type ProductCardProps = {
   price: string;
   thumb: ImageSourcePropType;
   description: string;
+  quantity?: number;
 }
 
 type Props = TouchableOpacityProps & {
