@@ -55,13 +55,19 @@ export function Home() {
   }
 
   const translateX = useSharedValue(500);
+  const translateY = useSharedValue(500);
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const animatedXStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
+  }));
+
+  const animatedYStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateX.value}],
   }));
 
   useEffect(() => {
     translateX.value = withTiming(0, { duration: 1000 });
+    translateY.value = withTiming(0, { duration: 1000 });
   }, [inputValue]);
 
   return (
@@ -88,10 +94,11 @@ export function Home() {
         <Image source={CoffeeBg} style={{ marginLeft: 'auto', marginRight: 10 }} resizeMode="contain" />
       </View>
       <View style={styles.coffeeList}>
-        <Animated.View style={[styles.carousel, animatedStyle]}>
+        <Animated.View style={[styles.carousel, animatedXStyle]}>
           <CarouselComponent data={products} />
         </Animated.View>
-        <View style={styles.coffeeListWrapper}>
+        
+        <Animated.View style={[styles.coffeeListWrapper, animatedYStyle]}>
           <Text style={styles.coffeeListTitle}>Nossos cafés</Text>
           <View style={styles.tagWrapper}>
             <Pressable
@@ -119,7 +126,7 @@ export function Home() {
               </Text>
             </Pressable>
           </View>
-        </View>
+      
         <SectionList
           sections={filteredSections}
           keyExtractor={item => item.id}
@@ -136,6 +143,7 @@ export function Home() {
           ListEmptyComponent={<Text style={styles.emptyMessage}>Nenhum café encontrado</Text>}
           scrollEnabled={false}
         />
+      </Animated.View>
       </View>
     </ScrollView>
   );

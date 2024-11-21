@@ -94,14 +94,12 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.GREY_400,
     fontFamily: THEME.FONTS.BOLD,
     fontSize: THEME.FONT_SIZE.TITLE_XS,
-    marginHorizontal: 34,
     marginTop: 20
   },
   emptyMessage: {
     color: THEME.COLORS.GREY_400,
     fontFamily: THEME.FONTS.BOLD,
     fontSize: THEME.FONT_SIZE.TEXT_SM,
-    marginHorizontal: 36,
     marginTop: 20,
     paddingBottom: 80
   }
