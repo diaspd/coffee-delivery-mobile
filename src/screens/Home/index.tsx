@@ -56,6 +56,11 @@ export function Home() {
 
   const translateX = useSharedValue(500);
   const translateY = useSharedValue(500);
+  const translateYIntro = useSharedValue(-500);
+
+  const animatedIntroStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateYIntro.value}],
+  }));
 
   const animatedXStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: translateX.value }],
@@ -66,13 +71,14 @@ export function Home() {
   }));
 
   useEffect(() => {
-    translateX.value = withTiming(0, { duration: 1000 });
-    translateY.value = withTiming(0, { duration: 1000 });
-  }, [inputValue]);
+    translateX.value = withTiming(0, { duration: 2000 });
+    translateY.value = withTiming(0, { duration: 2000 });
+    translateYIntro.value = withTiming(0, { duration: 1000 });
+  }, []);
 
   return (
-    <ScrollView>
-      <View style={styles.intro}>
+    <ScrollView style={{backgroundColor: THEME.COLORS.GREY_900}}>
+      <Animated.View style={[styles.intro, animatedIntroStyle]}>
         <Header hasCart />
         <Text style={styles.title}>Encontre o café perfeito para qualquer hora do dia</Text>
         <View style={styles.input}>
@@ -92,7 +98,8 @@ export function Home() {
           />
         </View>
         <Image source={CoffeeBg} style={{ marginLeft: 'auto', marginRight: 10 }} resizeMode="contain" />
-      </View>
+      </Animated.View>
+
       <View style={styles.coffeeList}>
         <Animated.View style={[styles.carousel, animatedXStyle]}>
           <CarouselComponent data={products} />
