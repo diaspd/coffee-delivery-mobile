@@ -1,19 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { THEME } from '../../styles/theme';
 
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F7F7F8',
+    backgroundColor: THEME.COLORS.WHITE,
     padding: 16,
-    paddingHorizontal: 24,
+    paddingHorizontal: 32,
     elevation: 2,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
   iconContainer: {
-    backgroundColor: '#A3A3A3',
+    backgroundColor: THEME.COLORS.GREY_500,
     borderRadius: 8,
     width: 40,
     height: 40,
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: -5,
     right: -5,
-    backgroundColor: '#8257E5',
+    backgroundColor: THEME.COLORS.PURPLE,
     width: 20,
     height: 20,
     borderRadius: 10,
@@ -33,19 +34,19 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   quantityText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontWeight: 'bold',
+    color: THEME.COLORS.WHITE,
+    fontSize: THEME.FONT_SIZE.TEXT_XS,
   },
   textContainer: {
     flex: 1,
+    marginHorizontal: 12
   },
   message: {
-    fontSize: 14,
-    color: '#525252',
+    fontSize: THEME.FONT_SIZE.TEXT_SM,
+    color: THEME.COLORS.GREY_400,
   },
   bold: {
-    fontWeight: 'bold',
+    fontFamily: THEME.FONTS.BOLD_DEFAULT,
   },
   viewButton: {
     flexDirection: 'row',
@@ -55,8 +56,8 @@ export const styles = StyleSheet.create({
     gap: 4
   },
   viewButtonText: {
-    color: '#8257E5',
-    fontSize: 14,
-    fontWeight: 'bold',
+    color: THEME.COLORS.PURPLE,
+    fontSize: THEME.FONT_SIZE.TEXT_XS,
+    fontFamily: THEME.FONTS.BOLD_DEFAULT,
   },
 });
