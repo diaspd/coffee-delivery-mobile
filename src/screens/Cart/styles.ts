@@ -12,6 +12,18 @@ export const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1
   },
+  swipeableContainer: {
+    backgroundColor: THEME.COLORS.RED_LIGHT,
+  },
+  swipeableRemove: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 6,
+    backgroundColor: THEME.COLORS.RED_LIGHT,
+    alignItems: 'flex-start',
+    marginLeft: 32,
+    justifyContent: 'center'
+  },
   emptyMessage: {
     color: THEME.COLORS.GREY_300,
     fontFamily: THEME.FONTS.BOLD,

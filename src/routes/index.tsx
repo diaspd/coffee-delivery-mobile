@@ -19,7 +19,7 @@ export function Routes() {
           <AppRoutes />
         </NavigationContainer>
 
-        <Notification data={cart} />
+        {/* <Notification  /> */}
       </CartContextProvider>
     </View>
   )

@@ -1,9 +1,14 @@
+import { useRef } from "react";
 import { FlatList, Text, View, TouchableOpacity } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-import { Coffee } from "phosphor-react-native";
+import Animated, { Layout, SlideInRight, SlideOutRight } from 'react-native-reanimated';
+import { Swipeable, GestureHandlerRootView } from "react-native-gesture-handler";
+
+import { Coffee, Trash } from "phosphor-react-native";
 
 import { styles } from "./styles";
+import { THEME } from "../../styles/theme";
 
 import type { AppRoutesProps } from "../../routes/app.routes";
 
@@ -12,11 +17,11 @@ import { useCart } from "../../hooks/useCart";
 import { Header } from "../../components/Header";
 import { CoffeeCartCard } from "../../components/CoffeeCartCard";
 
-import { THEME } from "../../styles/theme";
-
 export function Cart() {
   const navigationStack = useNavigation<AppRoutesProps>();
   const { cart, removeProductCart, handleStorageProductRemoveAll } = useCart();
+
+  const swipeableRefs = useRef<Swipeable[]>([]);
 
   async function handleItemRemove(productId: string) {
     try {
@@ -47,7 +52,36 @@ export function Cart() {
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <View style={styles.coffeeCartCardwrapper}>
-            <CoffeeCartCard data={item} onRemove={() => handleItemRemove(item.id)} />
+            <Animated.View
+             key={item.id}
+             entering={SlideInRight}
+             exiting={SlideOutRight}
+             layout={Layout.springify()} 
+            >
+              <GestureHandlerRootView>
+                <Swipeable 
+                  ref={(ref) => {
+                    if (ref) {
+                      swipeableRefs.current.push(ref)
+                    }
+                  }}
+                  overshootLeft={false}
+                  containerStyle={styles.swipeableContainer}
+                  leftThreshold={10}
+                  renderRightActions={() => null}
+                  onSwipeableOpen={() => removeProductCart(item.id)}
+                  renderLeftActions={() => {
+                    return(
+                      <View style={styles.swipeableRemove}>
+                        <Trash size={32} color={THEME.COLORS.RED_DARK} />
+                      </View>
+                    )
+                  }}
+                >
+                  <CoffeeCartCard data={item} onRemove={() => handleItemRemove(item.id)} />
+                </Swipeable>
+              </GestureHandlerRootView>
+            </Animated.View>
           </View>
         )}
         ListEmptyComponent={
