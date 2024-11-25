@@ -66,7 +66,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     try {
       await storageProductRemoveAll(); 
       setCart([]); 
-      console.log('Cart cleared!');
     } catch (error) {
       console.error('Failed to clear the cart:', error);
     }
