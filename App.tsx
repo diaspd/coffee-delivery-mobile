@@ -13,7 +13,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold, Baloo2_700Bold });
   const [isLoading, setIsLoading] = useState(true);
 
-  if (!isLoading) {
+  if (isLoading) {
     return <SplashScreen onFinish={() => setIsLoading(false)} />;
   }
 
