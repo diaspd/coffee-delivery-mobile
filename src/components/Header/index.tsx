@@ -36,7 +36,7 @@ export function Header({ hasGoBack, hasCart }: HeaderProps) {
 
       {hasCart ? (
         <Pressable onPress={() => navigationStack.navigate('cart')} style={{ position: 'relative' }}>
-          <ShoppingCart color={THEME.COLORS.YELLOW_DARK} size={24} weight="fill" />
+          <ShoppingCart color={totalItems > 0 ? THEME.COLORS.PURPLE : THEME.COLORS.YELLOW_DARK} size={24} weight="fill" />
           {totalItems > 0 && (
             <View style={styles.badge}>
               <Text style={styles.badgeText}>{totalItems}</Text>
