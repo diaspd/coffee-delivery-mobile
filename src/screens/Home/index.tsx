@@ -14,7 +14,7 @@ import { Header } from "../../components/Header";
 import { CarouselComponent } from "../../components/CarouselComponent";
 import { CoffeeListCard, type ProductCardProps } from "../../components/CoffeeListCard";
 
-import { PRODUCTS } from "../../components/data/product";
+import { PRODUCTS } from "../../data/product";
 import CoffeeBg from "../../assets/coffee-bg.png";
 
 export function Home() {

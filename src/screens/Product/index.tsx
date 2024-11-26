@@ -8,7 +8,7 @@ import Coffe from '../../assets/coffees/coffee-big.png';
 import { THEME } from "../../styles/theme";
 
 import { Header } from "../../components/Header";
-import { PRODUCTS } from "../../components/data/product";
+import { PRODUCTS } from "../../data/product";
 import type { ProductCardProps } from "../../components/CoffeeListCard";
 import type { AppRoutesProps } from "../../routes/app.routes";
 import { useCart } from "../../hooks/useCart";
