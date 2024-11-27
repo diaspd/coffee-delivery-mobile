@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import { FlatList, Text, View, TouchableOpacity } from "react-native";
+import { FlatList, Text, View, TouchableOpacity, Pressable } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 import Animated, { Layout, SlideInRight, SlideOutRight } from 'react-native-reanimated';
 import { Swipeable, GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { Coffee, Trash } from "phosphor-react-native";
+import { ShoppingCart, Trash } from "phosphor-react-native";
 
 import { styles } from "./styles";
 import { THEME } from "../../styles/theme";
@@ -86,13 +86,18 @@ export function Cart() {
         )}
         ListEmptyComponent={
           <View>
-            <Text style={styles.emptyMessage}>Você ainda não adicionou nenhum café ao carrinho...</Text>
-            <Coffee color={THEME.COLORS.GREY_300} style={{ alignSelf: 'center', marginTop: 10 }} size={36}/>
+            <ShoppingCart weight="fill" color={THEME.COLORS.GREY_500} style={{ alignSelf: 'center', marginTop: 54 }} size={28}/>
+            <Text style={styles.emptyMessage}>Seu carrinho está vazio</Text>
+
+            <TouchableOpacity activeOpacity={0.6} onPress={() => navigationStack.navigate("home")} style={styles.listEmptyButton}>
+              <Text style={styles.listEmptyButtonText}>ver catálogo</Text>
+            </TouchableOpacity>
           </View>
         }
       />
 
-      <View style={styles.footer}>
+      {formattedTotalPrice ? (
+        <View style={styles.footer}>
         <View style={styles.priceWrapper}>
           <Text style={styles.totalValue}>
             Valor total
@@ -112,6 +117,7 @@ export function Cart() {
           <Text style={styles.buttonText}>confirmar pedido</Text>
         </TouchableOpacity>
       </View>
+      ) : null}
     </View>
   )
 }

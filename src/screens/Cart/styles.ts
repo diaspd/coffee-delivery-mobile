@@ -25,12 +25,27 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   emptyMessage: {
-    color: THEME.COLORS.GREY_300,
-    fontFamily: THEME.FONTS.BOLD,
+    color: THEME.COLORS.GREY_400,
+    fontFamily: THEME.FONTS.REGULAR,
     fontSize: THEME.FONT_SIZE.TEXT_MD,
     textAlign: 'center',
-    marginHorizontal: 36,
-    marginTop: 54,
+    marginTop: 10,
+  },
+  listEmptyButton: {
+    backgroundColor: THEME.COLORS.PURPLE_DARK,
+    
+    paddingVertical: 12,
+    height: 46,
+    marginTop: 32,
+    marginHorizontal: 54,
+
+    borderRadius: 6
+  },
+  listEmptyButtonText: {
+    color: THEME.COLORS.GREY_900,
+    textTransform: 'uppercase',
+    fontFamily: THEME.FONTS.BOLD_DEFAULT,
+    textAlign: 'center'
   },
   footer: {
     width: "100%",
