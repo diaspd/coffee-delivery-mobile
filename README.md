@@ -53,7 +53,7 @@ This project was developed with the following technologies:
 <br></br>
 
 ## 🔖 Layout
-- [ - Figma]()
+- [Coffee Delivery Mobile - Figma](https://www.figma.com/community/file/1245817631079079109/coffee-delivery-desafio-react-native)
 
 <br></br>
 
