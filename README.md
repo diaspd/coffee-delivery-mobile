@@ -48,7 +48,7 @@ This project was developed with the following technologies:
 </br>
 
 ## 📄 Project
-💰 .
+💰 A project with a lot of animations like splash screen, to add coffees to cart, finish screen and more.
 
 <br></br>
 
