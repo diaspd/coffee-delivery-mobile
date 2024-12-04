@@ -43,6 +43,8 @@ This project was developed with the following technologies:
 - React Native
 - Type Script
 - Expo
+- Skia
+- React Native Gesture Handler
 </b>
 
 </br>
