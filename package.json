@@ -1,5 +1,6 @@
 {
   "name": "coffee-delivery-mobile",
+  "author": "pedro-dias",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
   "scripts": {
